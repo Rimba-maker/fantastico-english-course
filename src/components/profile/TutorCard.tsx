@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { Globe, BadgeCheck, GraduationCap, BarChart3, CalendarClock, Target } from "lucide-react";
 
 type Props = {
   photo: string;
@@ -23,6 +24,8 @@ export default function TutorCard({
   specialization,
   index = 0,
 }: Props) {
+  const BadgeIcon = isNativeSpeaker ? Globe : BadgeCheck;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -36,19 +39,30 @@ export default function TutorCard({
       <h3 className="mt-4 text-heading-sm font-semibold text-navy">{name}</h3>
 
       <span
-        className={`mt-2 inline-block rounded-full px-3 py-1 text-micro-cap uppercase ${
+        className={`mt-2 inline-flex items-center gap-1 rounded-full px-3 py-1 text-micro-cap uppercase ${
           isNativeSpeaker ? "bg-gold-soft text-navy-press" : "bg-navy-subtle text-navy-press"
         }`}
       >
-        {isNativeSpeaker ? "🌍 Native Speaker" : "🇮🇩 Tutor Lokal Bersertifikat"}
+        <BadgeIcon className="h-3.5 w-3.5" strokeWidth={2} />
+        {isNativeSpeaker ? "Native Speaker" : "Tutor Lokal Bersertifikat"}
       </span>
 
-      <p className="mt-3 text-body-md text-ink-mute">
-        🎓 {degree}, {university}
+      <p className="mt-3 flex items-center justify-center gap-1.5 text-body-md text-ink-mute">
+        <GraduationCap className="h-4 w-4 shrink-0 text-navy" strokeWidth={1.75} />
+        {degree}, {university}
       </p>
-      <p className="mt-1 text-heading-sm font-semibold text-gold">📊 {scoreLabel}</p>
-      <p className="mt-1 text-body-md text-ink-mute">📅 {yearsExperience} tahun pengalaman mengajar</p>
-      <p className="mt-1 text-body-md text-ink-mute">🎯 Spesialisasi: {specialization}</p>
+      <p className="mt-1 flex items-center justify-center gap-1.5 text-heading-sm font-semibold text-gold">
+        <BarChart3 className="h-4 w-4 shrink-0" strokeWidth={2} />
+        {scoreLabel}
+      </p>
+      <p className="mt-1 flex items-center justify-center gap-1.5 text-body-md text-ink-mute">
+        <CalendarClock className="h-4 w-4 shrink-0 text-navy" strokeWidth={1.75} />
+        {yearsExperience} tahun pengalaman mengajar
+      </p>
+      <p className="mt-1 flex items-center justify-center gap-1.5 text-body-md text-ink-mute">
+        <Target className="h-4 w-4 shrink-0 text-navy" strokeWidth={1.75} />
+        Spesialisasi: {specialization}
+      </p>
     </motion.div>
   );
 }
