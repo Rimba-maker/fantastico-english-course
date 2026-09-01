@@ -1,0 +1,53 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHeader from "../../components/shared/PageHeader.astro";
+import StatsRow from "../../components/profile/StatsRow";
+import { siteConfig } from "../../lib/site";
+
+const misi = [
+  'Menyediakan kurikulum terstruktur dengan hasil yang bisa diukur (skor TOEFL/IELTS, bukan sekadar "lancar")',
+  "Membuka akses belajar fleksibel lewat jalur online untuk yang tidak bisa datang ke asrama",
+  "Menjaga kualitas lewat kelas kecil dan akses native speaker",
+  "Melayani kebutuhan institusi (sekolah/kampus/perusahaan) dengan program khusus",
+];
+---
+
+<Layout
+  title="Profil Perusahaan — Fantastico English Course"
+  description="Lembaga bahasa Inggris terdaftar resmi dengan 3.000+ alumni."
+>
+  <PageHeader title="Tentang Fantastico English Course." />
+
+  <section class="mx-auto max-w-3xl px-6 py-16 text-center">
+    <p class="text-body-lg text-ink">
+      Fantastico English Course berdiri sejak {siteConfig.stats.foundedYear} sebagai evolusi dari model
+      belajar immersive ala Kampung Inggris, dihadirkan dalam format yang lebih terstruktur — dengan
+      jalur online dan offline, legalitas jelas, dan hasil yang bisa diukur secara konkret.
+    </p>
+
+    <div class="mt-12 rounded-lg border border-hairline bg-canvas p-8 text-left shadow-card">
+      <h2 class="text-heading-lg text-navy">Visi</h2>
+      <p class="mt-2 text-body-md text-ink-mute">
+        Jadi lembaga bahasa Inggris paling dipercaya untuk hasil terukur, baik secara offline maupun
+        online.
+      </p>
+
+      <h2 class="mt-8 text-heading-lg text-navy">Misi</h2>
+      <ul class="mt-2 space-y-2">
+        {
+          misi.map((m) => (
+            <li class="text-body-md text-ink-mute">✓ {m}</li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="mt-12">
+      <StatsRow client:visible />
+    </div>
+
+    <p class="mt-12 text-caption text-ink-mute">
+      SK Diknas No. {siteConfig.legal.skDiknas} • NPSN {siteConfig.legal.npsn} • Badan Usaha: {siteConfig.legal.badanUsaha}
+    </p>
+  </section>
+</Layout>

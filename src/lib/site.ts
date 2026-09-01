@@ -11,6 +11,12 @@ export const siteConfig = {
     npsn: "69123456", // TODO: replace with real NPSN
     badanUsaha: "PT Fantastico Edukasi Nusantara", // TODO: confirm CV/PT + real name
   },
+  stats: {
+    foundedYear: 2019, // TODO: confirm real founding year
+    alumniCount: "3.000+",
+    classSizeMax: 10,
+    instansiPartnerCount: 42, // TODO: confirm real instansi partner count
+  },
   social: {
     instagram: "https://instagram.com/fantasticoenglish",
     tiktok: "https://tiktok.com/@fantasticoenglish",
