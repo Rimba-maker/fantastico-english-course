@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
 import PageHeader from "../components/shared/PageHeader.astro";
 import ContactForm from "../components/kontak/ContactForm";
@@ -25,9 +26,18 @@ const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(siteConfig.ad
       <div>
         <h2 class="text-heading-lg text-navy">Info Kontak</h2>
         <ul class="mt-4 space-y-2 text-body-md text-ink-mute">
-          <li>📱 {siteConfig.phone}</li>
-          <li>✉️ {siteConfig.email}</li>
-          <li>📍 {siteConfig.address}</li>
+          <li class="flex items-center gap-2">
+            <Icon name="lucide:phone" class="h-4 w-4 shrink-0 text-navy" />
+            {siteConfig.phone}
+          </li>
+          <li class="flex items-center gap-2">
+            <Icon name="lucide:mail" class="h-4 w-4 shrink-0 text-navy" />
+            {siteConfig.email}
+          </li>
+          <li class="flex items-start gap-2">
+            <Icon name="lucide:map-pin" class="mt-0.5 h-4 w-4 shrink-0 text-navy" />
+            {siteConfig.address}
+          </li>
         </ul>
 
         <div class="mt-6 overflow-hidden rounded-lg border border-hairline">

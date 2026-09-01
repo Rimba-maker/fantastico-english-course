@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import Layout from "../../layouts/Layout.astro";
 import PageHeader from "../../components/shared/PageHeader.astro";
 import PhotoCard from "../../components/shared/PhotoCard.astro";
@@ -43,7 +44,10 @@ const misi = [
       <ul class="mt-2 space-y-2">
         {
           misi.map((m) => (
-            <li class="text-body-md text-ink-mute">✓ {m}</li>
+            <li class="flex items-start gap-2 text-body-md text-ink-mute">
+              <Icon name="lucide:check" class="mt-1 h-4 w-4 shrink-0 text-status-available" />
+              {m}
+            </li>
           ))
         }
       </ul>

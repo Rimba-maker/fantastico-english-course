@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon/components";
+
 interface Row {
   paket: string;
   durasi: string;
@@ -28,7 +30,7 @@ const { rows } = Astro.props;
           <tr class={`border-t border-hairline ${r.featured ? "bg-canvas-gold" : ""}`}>
             <td class="px-4 py-3 text-body-md text-ink">
               {r.paket}
-              {r.featured && <span class="ml-1 text-gold">⭐</span>}
+              {r.featured && <Icon name="lucide:star" class="ml-1 inline h-4 w-4 fill-current text-gold" />}
             </td>
             <td class="px-4 py-3 text-body-md text-ink-mute">{r.durasi}</td>
             <td class="px-4 py-3 text-right text-body-tabular font-semibold text-gold">{r.harga}</td>

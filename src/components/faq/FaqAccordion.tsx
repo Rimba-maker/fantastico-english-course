@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { Plus } from "lucide-react";
 
 type Faq = { q: string; a: string };
 
@@ -30,9 +31,14 @@ export default function FaqAccordion({ items }: { items: Faq[] }) {
               }`}
             >
               {item.q}
-              <span aria-hidden="true" className={`shrink-0 text-heading-sm ${isOpen ? "text-navy" : "text-ink-mute"}`}>
-                {isOpen ? "−" : "+"}
-              </span>
+              <motion.span
+                aria-hidden="true"
+                animate={{ rotate: isOpen ? 45 : 0 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+                className={`shrink-0 ${isOpen ? "text-navy" : "text-ink-mute"}`}
+              >
+                <Plus className="h-5 w-5" strokeWidth={2} />
+              </motion.span>
             </button>
             <AnimatePresence initial={false}>
               {isOpen && (
