@@ -1,18 +1,13 @@
 import { motion } from "motion/react";
 import { fadeUp, staggerContainer } from "../motion/variants";
+import { statusMeta, type IntakeStatus } from "../kalender/statusMeta";
 
 type MonthPreview = {
   month: string;
   year: number;
   intakeDates: string[];
-  status: "tersedia" | "hampir-penuh" | "penuh";
+  status: IntakeStatus;
   highlight?: string;
-};
-
-const statusMeta: Record<MonthPreview["status"], { label: string; className: string; pulse?: boolean }> = {
-  tersedia: { label: "🟢 Tersedia", className: "bg-status-available" },
-  "hampir-penuh": { label: "🟡 Hampir Penuh", className: "bg-status-almost-full", pulse: true },
-  penuh: { label: "⚪ Penuh", className: "bg-status-full" },
 };
 
 export default function KalenderPreview({ months }: { months: MonthPreview[] }) {
@@ -36,10 +31,11 @@ export default function KalenderPreview({ months }: { months: MonthPreview[] }) 
                   {m.month} {m.year}
                 </p>
                 <span
-                  className={`rounded-full px-3 py-1 text-micro-cap uppercase text-white ${status.className} ${
+                  className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-micro-cap uppercase text-white ${status.className} ${
                     status.pulse ? "animate-pulse" : ""
                   }`}
                 >
+                  <status.icon className="h-3 w-3" strokeWidth={2.5} />
                   {status.label}
                 </span>
               </div>

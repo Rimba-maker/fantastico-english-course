@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { statusMeta, type IntakeStatus } from "./statusMeta";
 
 export type MonthData = {
   id: string; // "2026-03"
@@ -6,14 +7,8 @@ export type MonthData = {
   year: number;
   intakeDates: string[];
   program: string;
-  status: "tersedia" | "hampir-penuh" | "penuh";
+  status: IntakeStatus;
   highlight?: string;
-};
-
-const statusMeta: Record<MonthData["status"], { label: string; className: string; pulse?: boolean }> = {
-  tersedia: { label: "🟢 Tersedia", className: "bg-status-available" },
-  "hampir-penuh": { label: "🟡 Hampir Penuh", className: "bg-status-almost-full", pulse: true },
-  penuh: { label: "⚪ Penuh", className: "bg-status-full" },
 };
 
 export default function MonthCard({
@@ -44,10 +39,11 @@ export default function MonthCard({
           {data.month} {data.year}
         </p>
         <span
-          className={`shrink-0 rounded-full px-2.5 py-1 text-micro-cap uppercase text-white ${status.className} ${
+          className={`inline-flex shrink-0 items-center gap-1 rounded-full px-2.5 py-1 text-micro-cap uppercase text-white ${status.className} ${
             status.pulse ? "animate-pulse" : ""
           }`}
         >
+          <status.icon className="h-3 w-3" strokeWidth={2.5} />
           {status.label}
         </span>
       </div>

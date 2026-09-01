@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { X } from "lucide-react";
 import type { MonthData } from "./MonthCard";
 import { waLink } from "../../lib/site";
 
@@ -53,9 +54,9 @@ export default function MonthDetailModal({ data, onClose }: { data: MonthData | 
                 type="button"
                 onClick={onClose}
                 aria-label="Tutup"
-                className="text-heading-sm text-ink-mute hover:text-navy"
+                className="text-ink-mute hover:text-navy"
               >
-                ✕
+                <X className="h-5 w-5" strokeWidth={2} />
               </button>
             </div>
 
