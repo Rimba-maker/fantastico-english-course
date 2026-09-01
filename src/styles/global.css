@@ -1,1 +1,124 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+/* Tokens from DESIGN.md — keep these two files in sync. */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Brand & accent */
+  --color-navy: #1e3a5f;
+  --color-navy-deep: #17304f;
+  --color-navy-press: #102138;
+  --color-navy-soft: #3b5d82;
+  --color-navy-subtle: #dce6ef;
+  --color-navy-900: #0f1e30;
+  --color-gold: #c9a227;
+  --color-gold-soft: #e8d08a;
+
+  /* Surface */
+  --color-canvas: #ffffff;
+  --color-canvas-soft: #f6f9fc;
+  --color-canvas-gold: #fbf6e8;
+  --color-hairline: #e3e8ee;
+  --color-hairline-input: #a8c3de;
+
+  /* Text */
+  --color-ink: #1a1a1a;
+  --color-ink-secondary: #334155;
+  --color-ink-mute: #64748b;
+
+  /* Semantic — Kalender Akademik status badges */
+  --color-status-available: #16a34a;
+  --color-status-almost-full: #d97706;
+  --color-status-full: #94a3b8;
+
+  --color-shadow-navy: #0b1626;
+
+  /* Typography scale — name matches DESIGN.md's typography roles */
+  --text-display-xxl: 56px;
+  --text-display-xxl--line-height: 1.03;
+  --text-display-xxl--letter-spacing: -1.4px;
+  --text-display-xxl--font-weight: 300;
+
+  --text-display-xl: 48px;
+  --text-display-xl--line-height: 1.15;
+  --text-display-xl--letter-spacing: -0.96px;
+  --text-display-xl--font-weight: 300;
+
+  --text-display-lg: 32px;
+  --text-display-lg--line-height: 1.1;
+  --text-display-lg--letter-spacing: -0.64px;
+  --text-display-lg--font-weight: 300;
+
+  --text-display-md: 26px;
+  --text-display-md--line-height: 1.12;
+  --text-display-md--letter-spacing: -0.26px;
+  --text-display-md--font-weight: 300;
+
+  --text-heading-lg: 22px;
+  --text-heading-lg--line-height: 1.1;
+  --text-heading-lg--letter-spacing: -0.22px;
+  --text-heading-lg--font-weight: 300;
+
+  --text-heading-md: 20px;
+  --text-heading-md--line-height: 1.4;
+  --text-heading-md--letter-spacing: -0.2px;
+  --text-heading-md--font-weight: 400;
+
+  --text-heading-sm: 18px;
+  --text-heading-sm--line-height: 1.4;
+  --text-heading-sm--font-weight: 400;
+
+  --text-body-lg: 16px;
+  --text-body-lg--line-height: 1.5;
+  --text-body-lg--font-weight: 400;
+
+  --text-body-md: 15px;
+  --text-body-md--line-height: 1.5;
+  --text-body-md--font-weight: 400;
+
+  --text-body-tabular: 14px;
+  --text-body-tabular--line-height: 1.4;
+  --text-body-tabular--letter-spacing: -0.2px;
+  --text-body-tabular--font-weight: 400;
+
+  --text-button-md: 16px;
+  --text-button-md--line-height: 1;
+  --text-button-md--font-weight: 500;
+
+  --text-button-sm: 14px;
+  --text-button-sm--line-height: 1;
+  --text-button-sm--font-weight: 500;
+
+  --text-caption: 13px;
+  --text-caption--line-height: 1.4;
+  --text-caption--font-weight: 400;
+
+  --text-micro: 11px;
+  --text-micro--line-height: 1.4;
+  --text-micro--font-weight: 400;
+
+  --text-micro-cap: 10px;
+  --text-micro-cap--line-height: 1.15;
+  --text-micro-cap--letter-spacing: 0.4px;
+  --text-micro-cap--font-weight: 600;
+
+  /* Radius scale */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* Elevation */
+  --shadow-card: 0 1px 3px rgba(11, 22, 38, 0.08);
+  --shadow-modal: 0 8px 24px rgba(11, 22, 38, 0.08), 0 2px 6px rgba(11, 22, 38, 0.04);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+}
