@@ -1,17 +1,59 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
+import Hero from "../components/home/Hero";
+import TrustBar from "../components/home/TrustBar";
+import DuaJalurBelajar from "../components/home/DuaJalurBelajar";
+import KenapaFantastico from "../components/home/KenapaFantastico";
+import KalenderPreview from "../components/home/KalenderPreview";
+import RombonganTeaser from "../components/home/RombonganTeaser";
+import AlumniHasil from "../components/home/AlumniHasil";
+import { waLink } from "../lib/site";
+
+const allMonths = await getCollection("kalender-batch");
+const today = new Date();
+const currentKey = today.getFullYear() * 12 + today.getMonth(); // 0-indexed month
+
+const upcomingMonths = allMonths
+  .map((entry) => ({ id: entry.id, ...entry.data }))
+  .sort((a, b) => a.id.localeCompare(b.id))
+  .filter((m) => {
+    const [year, month] = m.id.split("-").map(Number);
+    return year * 12 + (month - 1) >= currentKey;
+  })
+  .slice(0, 3);
+
+const trackOrder = { offline: 0, online: 1, rombongan: 2 };
+const featuredAlumni = await getCollection("alumni", (entry) => entry.data.featured);
+const testimonials = featuredAlumni
+  .map((entry) => ({ ...entry.data, quote: (entry.body ?? "").trim() }))
+  .sort((a, b) => trackOrder[a.track] - trackOrder[b.track]);
 ---
 
 <Layout
   title="Fantastico English Course — Bootcamp Offline & Kelas Online"
   description="Program bahasa Inggris offline (bootcamp asrama) dan online. Native speaker, kelas kecil, persiapan TOEFL & IELTS. Terdaftar SK Diknas."
 >
-  <section class="bg-navy px-6 py-24 text-center text-white">
-    <h1 class="mx-auto max-w-3xl text-display-lg md:text-display-xxl">
-      Belajar di Asrama, atau dari Rumah — Kamu yang Pilih.
-    </h1>
-    <p class="mx-auto mt-4 max-w-xl text-body-lg text-navy-subtle">
-      Halaman ini masih dalam pengerjaan — layout, navbar, footer, dan design tokens sudah terpasang.
+  <Hero client:load />
+  <TrustBar client:load />
+  <DuaJalurBelajar client:visible />
+  <KenapaFantastico client:visible />
+  <KalenderPreview client:visible months={upcomingMonths} />
+  <RombonganTeaser client:visible />
+  <AlumniHasil client:visible testimonials={testimonials} />
+
+  <section class="bg-navy px-6 py-16 text-center text-white">
+    <h2 class="text-display-md md:text-display-lg">Siap Upgrade Bahasa Inggrismu?</h2>
+    <p class="mx-auto mt-3 max-w-xl text-body-lg text-navy-subtle">
+      Konsultasi gratis lewat WhatsApp — kami bantu pilihkan jalur dan paket yang paling cocok.
     </p>
+    <a
+      href={waLink("Halo, saya mau daftar Fantastico English Course.")}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mt-6 inline-block rounded-full bg-white px-6 py-3 text-button-md text-navy-press"
+    >
+      Daftar Sekarang
+    </a>
   </section>
 </Layout>
