@@ -1,0 +1,94 @@
+---
+import { siteConfig, waLink, navProgram, navInfoLainnya, navPrimary } from "../../lib/site";
+---
+
+<header class="sticky top-0 z-50 border-b border-hairline bg-canvas/95 backdrop-blur">
+  <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+    <a href="/" class="text-heading-sm font-semibold text-navy">
+      {siteConfig.name}
+    </a>
+
+    <input type="checkbox" id="nav-toggle" class="peer hidden" />
+
+    <div
+      class="fixed inset-x-0 top-[65px] hidden max-h-[calc(100vh-65px)] flex-col gap-1 overflow-y-auto border-b border-hairline bg-canvas px-6 py-4 peer-checked:flex md:static md:flex md:max-h-none md:flex-row md:items-center md:gap-8 md:border-none md:p-0"
+    >
+      <a href="/" class="rounded-md px-2 py-2 text-body-md text-ink hover:text-navy md:px-0">
+        Beranda
+      </a>
+
+      <div class="group relative">
+        <button
+          type="button"
+          class="flex w-full items-center justify-between gap-1 rounded-md px-2 py-2 text-body-md text-ink hover:text-navy md:w-auto md:px-0"
+        >
+          Program <span aria-hidden="true">▾</span>
+        </button>
+        <div
+          class="static mt-1 flex flex-col gap-1 pl-4 md:absolute md:left-0 md:top-full md:mt-2 md:hidden md:min-w-56 md:flex-col md:rounded-lg md:border md:border-hairline md:bg-canvas md:p-2 md:shadow-modal md:group-hover:flex"
+        >
+          {
+            navProgram.map((item) => (
+              <a
+                href={item.href}
+                class="rounded-md px-3 py-2 text-body-md text-ink hover:bg-canvas-soft hover:text-navy"
+              >
+                {item.label}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      {
+        navPrimary.slice(1).map((item) => (
+          <a href={item.href} class="rounded-md px-2 py-2 text-body-md text-ink hover:text-navy md:px-0">
+            {item.label}
+          </a>
+        ))
+      }
+
+      <div class="group relative">
+        <button
+          type="button"
+          class="flex w-full items-center justify-between gap-1 rounded-md px-2 py-2 text-body-md text-ink hover:text-navy md:w-auto md:px-0"
+        >
+          Info Lainnya <span aria-hidden="true">▾</span>
+        </button>
+        <div
+          class="static mt-1 flex flex-col gap-1 pl-4 md:absolute md:left-0 md:top-full md:mt-2 md:hidden md:min-w-56 md:flex-col md:rounded-lg md:border md:border-hairline md:bg-canvas md:p-2 md:shadow-modal md:group-hover:flex"
+        >
+          {
+            navInfoLainnya.map((item) => (
+              <a
+                href={item.href}
+                class="rounded-md px-3 py-2 text-body-md text-ink hover:bg-canvas-soft hover:text-navy"
+              >
+                {item.label}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <a
+        href={waLink("Halo, saya mau daftar Fantastico English Course.")}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-2 rounded-full bg-navy px-4 py-2 text-center text-button-md text-white md:mt-0"
+      >
+        Daftar Sekarang
+      </a>
+    </div>
+
+    <label
+      for="nav-toggle"
+      class="cursor-pointer rounded-md p-2 text-navy md:hidden"
+      aria-label="Buka menu"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round" />
+      </svg>
+    </label>
+  </nav>
+</header>

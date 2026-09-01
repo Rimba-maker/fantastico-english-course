@@ -1,0 +1,33 @@
+---
+import "../styles/global.css";
+import Navbar from "../components/shared/Navbar.astro";
+import Footer from "../components/shared/Footer.astro";
+import FloatingWhatsApp from "../components/shared/FloatingWhatsApp.astro";
+import { siteConfig } from "../lib/site";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} | {siteConfig.name}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <Navbar />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <FloatingWhatsApp />
+  </body>
+</html>
