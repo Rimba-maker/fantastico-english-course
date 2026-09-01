@@ -380,6 +380,16 @@ Shadow tint (`{colors.shadow-navy}` — `#0B1626`) replaces Stripe's `shadow-blu
 ### Photography Geometry
 Real photography is the primary visual medium (tutors, dorm/English Area, live-class screenshots — see PRD Section 17). Photos sit inside `{rounded.lg}` 12px containers, inset 4:3 or 3:2, with a subtle Level 1 shadow — no faux-UI chrome, since there's no software product to mock up.
 
+## Icons
+
+**Lucide**, one family, one stroke weight (`strokeWidth={1.75}` for standalone/decorative icons, `{2}`–`{2.5}` for small inline icons next to text where a thin stroke would disappear). No emoji, no Unicode glyphs standing in for icons — every pictogram on the site is a drawn Lucide icon.
+
+- **React islands** (`.tsx`): import directly from `lucide-react` (e.g. `import { Target } from "lucide-react"`).
+- **Static `.astro` files**: `import { Icon } from "astro-icon/components"`, then `<Icon name="lucide:target" />` — zero runtime JS, inlined at build time via `@iconify-json/lucide`.
+- Icon color follows the surrounding text color by default (`text-navy`, `text-ink-mute`, etc.) unless the icon itself carries meaning — status icons (kalender badges) and achievement icons (checkmarks, the featured-tier star) use their semantic color (`status-available` green, `gold`) regardless of surrounding text color.
+- Reuse the same icon for the same concept across pages (e.g. `Languages` for "Akses Native Speaker" appears identically in the homepage trust bar and the Kenapa Fantastico grid) — don't pick a different icon per instance of the same idea.
+- This was a deliberate late addition, not part of the original retint: the PRD's own copy used emoji throughout (trust bar, program tiers, facility lists, tutor template), which is protected content, not a stylistic accident — replacing it was a scoped decision made after flagging the tension, not a silent redesign.
+
 ## Components
 
 ### Buttons
@@ -426,9 +436,11 @@ Unchanged — `text-input` / `text-input-focused`, navy border on focus instead 
 - Render display tiers (56–22px) at weight 300 with negative tracking; drop to 400 for everything below that.
 - Use `font-feature-settings: "tnum"` on every price, score, and calendar-date cell.
 - Use real photography for feature cards — tutors, dorm/English Area, live-class screenshots — never a fabricated product-UI mockup.
+- Use a Lucide icon (via `lucide-react` or `astro-icon`) for every pictogram, including new copy that arrives with an emoji prefix — translate it to the matching Lucide icon rather than keeping the emoji.
 
 ### Don't
 - Don't bring back the gradient mesh — it's Stripe's fintech signature, not this brand's.
+- Don't use emoji or Unicode glyphs (▾ ✓ ✕ ⭐ etc.) as icons — every icon on the site is a drawn Lucide icon, one family, one stroke weight.
 - Don't add a third accent color beyond navy and gold — the semantic status trio (green/amber/slate) exists only for the kalender badges, not as general-purpose brand color.
 - Don't use navy as a button color together with gold on the same surface — pick one accent per component.
 - Don't render price, score, or date cells without `tnum`.
