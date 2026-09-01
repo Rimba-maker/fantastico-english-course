@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import PageHeader from "../../components/shared/PageHeader.astro";
+import PhotoCard from "../../components/shared/PhotoCard.astro";
 import StatsRow from "../../components/profile/StatsRow";
 import { siteConfig } from "../../lib/site";
 
@@ -19,7 +20,13 @@ const misi = [
   <PageHeader title="Tentang Fantastico English Course." />
 
   <section class="mx-auto max-w-3xl px-6 py-16 text-center">
-    <p class="text-body-lg text-ink">
+    <PhotoCard
+      src="/images/perusahaan-lobby.jpg"
+      alt="Gedung dan lobi Fantastico English Course"
+      aspect="aspect-[16/9]"
+    />
+
+    <p class="mt-10 text-body-lg text-ink">
       Fantastico English Course berdiri sejak {siteConfig.stats.foundedYear} sebagai evolusi dari model
       belajar immersive ala Kampung Inggris, dihadirkan dalam format yang lebih terstruktur — dengan
       jalur online dan offline, legalitas jelas, dan hasil yang bisa diukur secara konkret.
