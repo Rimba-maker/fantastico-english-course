@@ -7,14 +7,14 @@ import { waLink } from "../../lib/site";
 
 const tiers = [
   {
-    emoji: "⚡",
+    icon: "zap" as const,
     title: "Online 2 Minggu — Trial Sprint",
     price: "Rp 650.000",
     suitableFor: "Cocok untuk: coba dulu sebelum commit, atau butuh polish cepat sebelum interview/acara tertentu",
     features: ["Live class via Zoom, 5x/minggu", "Modul digital + grup diskusi WhatsApp", "Sertifikat kelulusan"],
   },
   {
-    emoji: "📈",
+    icon: "trending-up" as const,
     title: "Online 1 Bulan — Regular Progress",
     price: "Rp 1.200.000",
     suitableFor: "Cocok untuk: yang mau belajar rutin tapi tetap fleksibel dari rumah/kantor",
@@ -25,7 +25,7 @@ const tiers = [
     ],
   },
   {
-    emoji: "🎯",
+    icon: "target" as const,
     title: "Online 2 Bulan — Deep Progress",
     price: "Rp 2.200.000",
     suitableFor: "Cocok untuk: yang serius mau level up signifikan tanpa harus pindah ke asrama",
@@ -65,7 +65,7 @@ const tiers = [
           <ProgramTierCard
             client:visible
             index={i}
-            emoji={tier.emoji}
+            icon={tier.icon}
             title={tier.title}
             price={tier.price}
             suitableFor={tier.suitableFor}

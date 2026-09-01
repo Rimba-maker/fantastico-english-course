@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { Check } from "lucide-react";
 import { fadeUp, staggerContainer } from "../motion/variants";
 
 const benefits = [
@@ -22,9 +23,10 @@ export default function RombonganBenefits() {
         <motion.li
           key={b}
           variants={fadeUp}
-          className="rounded-lg bg-canvas p-4 text-left text-body-md text-ink shadow-card"
+          className="flex items-start gap-3 rounded-lg bg-canvas p-4 text-left text-body-md text-ink shadow-card"
         >
-          ✓ {b}
+          <Check className="mt-0.5 h-4 w-4 shrink-0 text-status-available" strokeWidth={2.5} />
+          {b}
         </motion.li>
       ))}
     </motion.ul>

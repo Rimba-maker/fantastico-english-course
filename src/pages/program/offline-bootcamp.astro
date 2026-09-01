@@ -7,7 +7,7 @@ import { waLink } from "../../lib/site";
 
 const tiers = [
   {
-    emoji: "🌱",
+    icon: "sprout" as const,
     title: "Bootcamp 1 Bulan — Foundation Intensive",
     price: "Rp 2.500.000",
     suitableFor: "Cocok untuk: pemula yang mau kick-start cepat, atau yang waktunya terbatas",
@@ -19,7 +19,7 @@ const tiers = [
     ],
   },
   {
-    emoji: "🌿",
+    icon: "leaf" as const,
     title: "Bootcamp 2 Bulan — Active Speaker",
     price: "Rp 4.500.000",
     suitableFor: "Cocok untuk: yang mau progres signifikan, siap komitmen lebih lama",
@@ -31,7 +31,7 @@ const tiers = [
     ],
   },
   {
-    emoji: "🎯",
+    icon: "target" as const,
     title: "Bootcamp 3 Bulan — Fluent & Test-Ready",
     price: "Rp 6.500.000",
     suitableFor:
@@ -46,7 +46,7 @@ const tiers = [
     featured: true,
   },
   {
-    emoji: "🏖️",
+    icon: "palmtree" as const,
     title: "Program Holiday (2 Minggu)",
     price: "Rp 1.800.000",
     suitableFor: "Cocok untuk: pelajar/mahasiswa yang mau manfaatin libur sekolah/semester",
@@ -89,7 +89,7 @@ const tiers = [
           <ProgramTierCard
             client:visible
             index={i}
-            emoji={tier.emoji}
+            icon={tier.icon}
             title={tier.title}
             price={tier.price}
             suitableFor={tier.suitableFor}
