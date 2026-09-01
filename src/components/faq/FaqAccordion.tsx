@@ -10,6 +10,8 @@ export default function FaqAccordion({ items }: { items: Faq[] }) {
     <div className="space-y-3">
       {items.map((item, i) => {
         const isOpen = openIndex === i;
+        const buttonId = `faq-button-${i}`;
+        const panelId = `faq-panel-${i}`;
         return (
           <div
             key={item.q}
@@ -18,21 +20,26 @@ export default function FaqAccordion({ items }: { items: Faq[] }) {
             }`}
           >
             <button
+              id={buttonId}
               type="button"
               onClick={() => setOpenIndex(isOpen ? null : i)}
               aria-expanded={isOpen}
+              aria-controls={panelId}
               className={`flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-body-lg font-semibold ${
                 isOpen ? "text-navy" : "text-ink"
               }`}
             >
               {item.q}
-              <span className={`shrink-0 text-heading-sm ${isOpen ? "text-navy" : "text-ink-mute"}`}>
+              <span aria-hidden="true" className={`shrink-0 text-heading-sm ${isOpen ? "text-navy" : "text-ink-mute"}`}>
                 {isOpen ? "−" : "+"}
               </span>
             </button>
             <AnimatePresence initial={false}>
               {isOpen && (
                 <motion.div
+                  id={panelId}
+                  role="region"
+                  aria-labelledby={buttonId}
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}

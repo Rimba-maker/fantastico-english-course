@@ -8,7 +8,7 @@ import { siteConfig, waLink, navProgram, navInfoLainnya, navPrimary } from "../.
       {siteConfig.name}
     </a>
 
-    <input type="checkbox" id="nav-toggle" class="peer hidden" />
+    <input type="checkbox" id="nav-toggle" class="peer sr-only" />
 
     <div
       class="fixed inset-x-0 top-[65px] hidden max-h-[calc(100vh-65px)] flex-col gap-1 overflow-y-auto border-b border-hairline bg-canvas px-6 py-4 peer-checked:flex md:static md:flex md:max-h-none md:flex-row md:items-center md:gap-8 md:border-none md:p-0"
@@ -20,12 +20,13 @@ import { siteConfig, waLink, navProgram, navInfoLainnya, navPrimary } from "../.
       <div class="group relative">
         <button
           type="button"
+          aria-haspopup="true"
           class="flex w-full items-center justify-between gap-1 rounded-md px-2 py-2 text-body-md text-ink hover:text-navy md:w-auto md:px-0"
         >
           Program <span aria-hidden="true">▾</span>
         </button>
         <div
-          class="static mt-1 flex flex-col gap-1 pl-4 md:absolute md:left-0 md:top-full md:mt-2 md:hidden md:min-w-56 md:flex-col md:rounded-lg md:border md:border-hairline md:bg-canvas md:p-2 md:shadow-modal md:group-hover:flex"
+          class="static mt-1 flex flex-col gap-1 pl-4 md:absolute md:left-0 md:top-full md:mt-2 md:hidden md:min-w-56 md:flex-col md:rounded-lg md:border md:border-hairline md:bg-canvas md:p-2 md:shadow-modal md:group-hover:flex md:group-focus-within:flex"
         >
           {
             navProgram.map((item) => (
@@ -51,12 +52,13 @@ import { siteConfig, waLink, navProgram, navInfoLainnya, navPrimary } from "../.
       <div class="group relative">
         <button
           type="button"
+          aria-haspopup="true"
           class="flex w-full items-center justify-between gap-1 rounded-md px-2 py-2 text-body-md text-ink hover:text-navy md:w-auto md:px-0"
         >
           Info Lainnya <span aria-hidden="true">▾</span>
         </button>
         <div
-          class="static mt-1 flex flex-col gap-1 pl-4 md:absolute md:left-0 md:top-full md:mt-2 md:hidden md:min-w-56 md:flex-col md:rounded-lg md:border md:border-hairline md:bg-canvas md:p-2 md:shadow-modal md:group-hover:flex"
+          class="static mt-1 flex flex-col gap-1 pl-4 md:absolute md:left-0 md:top-full md:mt-2 md:hidden md:min-w-56 md:flex-col md:rounded-lg md:border md:border-hairline md:bg-canvas md:p-2 md:shadow-modal md:group-hover:flex md:group-focus-within:flex"
         >
           {
             navInfoLainnya.map((item) => (
@@ -83,7 +85,7 @@ import { siteConfig, waLink, navProgram, navInfoLainnya, navPrimary } from "../.
 
     <label
       for="nav-toggle"
-      class="cursor-pointer rounded-md p-2 text-navy md:hidden"
+      class="cursor-pointer rounded-md p-2 text-navy peer-focus-visible:ring-2 peer-focus-visible:ring-navy peer-focus-visible:ring-offset-2 md:hidden"
       aria-label="Buka menu"
     >
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">

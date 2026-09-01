@@ -1,8 +1,31 @@
+import { useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import type { MonthData } from "./MonthCard";
 import { waLink } from "../../lib/site";
 
+const titleId = "month-detail-title";
+
 export default function MonthDetailModal({ data, onClose }: { data: MonthData | null; onClose: () => void }) {
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const previouslyFocused = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (!data) return;
+
+    previouslyFocused.current = document.activeElement as HTMLElement;
+    closeButtonRef.current?.focus();
+
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") onClose();
+    }
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      previouslyFocused.current?.focus();
+    };
+  }, [data, onClose]);
+
   return (
     <AnimatePresence>
       {data && (
@@ -15,14 +38,18 @@ export default function MonthDetailModal({ data, onClose }: { data: MonthData | 
         >
           <motion.div
             layoutId={`month-card-${data.id}`}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={titleId}
             onClick={(e) => e.stopPropagation()}
             className="w-full max-w-md rounded-xl bg-canvas p-8 shadow-modal"
           >
             <div className="flex items-start justify-between gap-4">
-              <h3 className="text-heading-lg text-navy">
+              <h3 id={titleId} className="text-heading-lg text-navy">
                 {data.month} {data.year}
               </h3>
               <button
+                ref={closeButtonRef}
                 type="button"
                 onClick={onClose}
                 aria-label="Tutup"
