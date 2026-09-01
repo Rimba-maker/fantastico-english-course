@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import PageHeader from "../components/shared/PageHeader.astro";
+import PhotoCard from "../components/shared/PhotoCard.astro";
 import KalenderGrid from "../components/kalender/KalenderGrid";
 import { waLink } from "../lib/site";
 
@@ -19,6 +20,10 @@ const months = allMonths.map((entry) => ({ id: entry.id, ...entry.data })).sort(
   />
 
   <section class="mx-auto max-w-6xl px-6 py-16">
+    <div class="mx-auto mb-10 max-w-2xl">
+      <PhotoCard src="/images/kalender-planner.jpg" alt="Planner dan kalender di meja" aspect="aspect-[21/9]" />
+    </div>
+
     <KalenderGrid client:visible months={months} />
 
     <div class="mt-10 text-center">

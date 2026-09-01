@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import PageHeader from "../components/shared/PageHeader.astro";
+import PhotoCard from "../components/shared/PhotoCard.astro";
 import AlumniGrid from "../components/alumni/AlumniGrid";
 
 const trackOrder = { offline: 0, online: 1, rombongan: 2 };
@@ -18,6 +19,17 @@ const testimonials = allAlumni
   <PageHeader title="Hasil Nyata, Bukan Sekadar Klaim." />
 
   <section class="mx-auto max-w-6xl px-6 py-16">
-    <AlumniGrid client:visible testimonials={testimonials} />
+    <div class="grid gap-6 sm:grid-cols-2">
+      <PhotoCard
+        src="/images/alumni-study.jpg"
+        alt="Peserta belajar persiapan tes"
+        caption="Persiapan TOEFL/IELTS yang serius, bukan sekadar teori"
+      />
+      <PhotoCard src="/images/certificate.jpg" alt="Sertifikat kelulusan" caption="Sertifikat kelulusan program" />
+    </div>
+
+    <div class="mt-10">
+      <AlumniGrid client:visible testimonials={testimonials} />
+    </div>
   </section>
 </Layout>
