@@ -30,7 +30,7 @@ export default function KalenderPreview({ months }: { months: MonthPreview[] }) 
         {months.map((m) => {
           const status = statusMeta[m.status];
           return (
-            <motion.div key={`${m.year}-${m.month}`} variants={fadeUp} className="rounded-lg border border-hairline bg-canvas p-6 shadow-card">
+            <motion.div key={`${m.year}-${m.month}`} variants={fadeUp} className="rounded-lg bg-canvas p-6 shadow-card">
               <div className="flex items-center justify-between">
                 <p className="text-heading-sm font-semibold text-navy">
                   {m.month} {m.year}

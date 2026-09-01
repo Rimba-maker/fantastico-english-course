@@ -37,7 +37,7 @@ export default function MonthCard({
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.05 }}
       whileHover={{ y: -3 }}
-      className="flex flex-col rounded-lg border border-hairline bg-canvas p-5 text-left shadow-card"
+      className="flex flex-col rounded-lg bg-canvas p-5 text-left shadow-card"
     >
       <div className="flex items-center justify-between gap-2">
         <p className="text-heading-sm font-semibold text-navy">

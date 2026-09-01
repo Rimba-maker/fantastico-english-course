@@ -34,7 +34,7 @@ export default function DuaJalurBelajar() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             whileHover={{ y: -4 }}
-            className="group overflow-hidden rounded-lg border border-hairline bg-canvas shadow-card transition-colors hover:border-navy"
+            className="group overflow-hidden rounded-lg border border-transparent bg-canvas shadow-card transition-colors hover:border-navy"
           >
             <img src={card.photo} alt={card.title} className="aspect-[16/10] w-full object-cover" loading="lazy" />
             <div className="p-8">

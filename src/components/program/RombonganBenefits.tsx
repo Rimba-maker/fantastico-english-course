@@ -22,7 +22,7 @@ export default function RombonganBenefits() {
         <motion.li
           key={b}
           variants={fadeUp}
-          className="rounded-lg border border-hairline bg-canvas p-4 text-left text-body-md text-ink shadow-card"
+          className="rounded-lg bg-canvas p-4 text-left text-body-md text-ink shadow-card"
         >
           ✓ {b}
         </motion.li>

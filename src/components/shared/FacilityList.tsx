@@ -16,7 +16,7 @@ export default function FacilityList({ title, items }: { title: string; items: s
           <motion.li
             key={item}
             variants={fadeUp}
-            className="rounded-lg border border-hairline bg-canvas p-4 text-body-md text-ink shadow-card"
+            className="rounded-lg bg-canvas p-4 text-body-md text-ink shadow-card"
           >
             {item}
           </motion.li>

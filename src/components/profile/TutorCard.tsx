@@ -30,7 +30,7 @@ export default function TutorCard({
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.08 }}
       whileHover={{ y: -4 }}
-      className="rounded-lg border border-hairline bg-canvas p-6 text-center shadow-card"
+      className="rounded-lg bg-canvas p-6 text-center shadow-card"
     >
       <img src={photo} alt={name} className="mx-auto h-24 w-24 rounded-full object-cover" loading="lazy" />
       <h3 className="mt-4 text-heading-sm font-semibold text-navy">{name}</h3>

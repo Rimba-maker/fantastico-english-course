@@ -57,7 +57,7 @@ function ScoreLine({ testimonial }: { testimonial: Testimonial }) {
 
 export default function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
-    <motion.blockquote variants={fadeUp} className="rounded-lg border border-hairline bg-canvas p-6 shadow-card">
+    <motion.blockquote variants={fadeUp} className="rounded-lg bg-canvas p-6 shadow-card">
       <p className="text-body-md text-ink">&ldquo;{testimonial.quote}&rdquo;</p>
       <ScoreLine testimonial={testimonial} />
       <footer className="mt-4 text-caption text-ink-mute">— {testimonial.name}</footer>

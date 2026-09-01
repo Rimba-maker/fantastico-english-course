@@ -31,7 +31,7 @@ export default function ProgramTierCard({
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.08 }}
       className={`relative flex flex-col rounded-lg p-8 shadow-card ${
-        featured ? "bg-navy-900 text-white" : "border border-hairline bg-canvas text-ink"
+        featured ? "bg-navy-900 text-white" : "bg-canvas text-ink"
       }`}
     >
       {featured && (

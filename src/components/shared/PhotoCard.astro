@@ -9,7 +9,7 @@ interface Props {
 const { src, alt, caption, aspect = "aspect-[4/3]" } = Astro.props;
 ---
 
-<figure class="overflow-hidden rounded-lg border border-hairline shadow-card">
+<figure class="overflow-hidden rounded-lg shadow-card">
   <img src={src} alt={alt} class={`${aspect} w-full object-cover`} loading="lazy" />
   {caption && (
     <figcaption class="bg-canvas px-4 py-3 text-caption text-ink-mute">{caption}</figcaption>
