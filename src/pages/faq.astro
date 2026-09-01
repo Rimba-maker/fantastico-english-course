@@ -1,0 +1,47 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/shared/PageHeader.astro";
+import FaqAccordion from "../components/faq/FaqAccordion";
+
+const faqs = [
+  {
+    q: "Bedanya offline dan online seberapa jauh hasilnya?",
+    a: "Standar kurikulum sama, bedanya di intensitas interaksi (offline lebih immersive 24 jam). Online tetap efektif untuk yang konsisten mengikuti live class dan sesi feedback.",
+  },
+  {
+    q: "Apakah bisa pilih fokus TOEFL saja atau IELTS saja?",
+    a: "Bisa, sampaikan preferensi saat konsultasi — kurikulum bisa disesuaikan di paket 3 bulan/2 bulan online.",
+  },
+  {
+    q: "Bagaimana sistem native speaker, apakah selalu ada?",
+    a: "Tersedia di paket tertentu sesuai jadwal (lihat detail per program) — bukan di semua paket dasar.",
+  },
+  {
+    q: "Untuk program rombongan, minimal berapa peserta?",
+    a: "Minimal 15 peserta untuk harga khusus volume.",
+  },
+  {
+    q: "Apakah kalau ambil online bisa upgrade ke offline nanti?",
+    a: "Bisa, konsultasikan untuk penyesuaian biaya jika ingin lanjut ke jalur offline.",
+  },
+  {
+    q: "Bagaimana kalau tidak lulus target skor TOEFL/IELTS di paket 3 bulan?",
+    a: "Ada garansi mengulang materi gratis (bukan garansi skor pasti, tapi kesempatan belajar ulang tanpa biaya tambahan).",
+  },
+  {
+    q: "Apakah sertifikat diakui secara resmi?",
+    a: "Sertifikat kelulusan dari lembaga kami menunjukkan penyelesaian program, bukan sertifikat resmi TOEFL/IELTS (yang harus diambil di lembaga penyelenggara resmi seperti ETS/British Council) — kami membantu persiapan, bukan menerbitkan skor resmi.",
+  },
+];
+---
+
+<Layout
+  title="FAQ — Fantastico"
+  description="Pertanyaan yang sering diajukan seputar program offline, online, dan rombongan Fantastico English Course."
+>
+  <PageHeader title="Pertanyaan yang Sering Diajukan." />
+
+  <section class="mx-auto max-w-3xl px-6 py-16">
+    <FaqAccordion client:visible items={faqs} />
+  </section>
+</Layout>
