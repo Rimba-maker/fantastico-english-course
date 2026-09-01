@@ -1,0 +1,100 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHeader from "../../components/shared/PageHeader.astro";
+import TutorCard from "../../components/profile/TutorCard";
+
+// TODO: replace dummy photos/bios with real tutor data before launch.
+const tutors = [
+  {
+    photo: "https://i.pravatar.cc/300?img=47",
+    name: "Sarah Mitchell",
+    isNativeSpeaker: true,
+    degree: "BA English Literature",
+    university: "University of Leeds",
+    scoreLabel: "IELTS 9.0",
+    yearsExperience: 6,
+    specialization: "Conversation & Business English",
+  },
+  {
+    photo: "https://i.pravatar.cc/300?img=12",
+    name: "Michael Anderson",
+    isNativeSpeaker: true,
+    degree: "MA TESOL",
+    university: "University of Melbourne",
+    scoreLabel: "IELTS 9.0",
+    yearsExperience: 8,
+    specialization: "IELTS Prep & Academic Writing",
+  },
+  {
+    photo: "https://i.pravatar.cc/300?img=33",
+    name: "Budi Santoso",
+    isNativeSpeaker: false,
+    degree: "S1 Pendidikan Bahasa Inggris",
+    university: "Universitas Negeri Malang",
+    scoreLabel: "TOEFL ITP 610",
+    yearsExperience: 9,
+    specialization: "TOEFL Prep & Grammar Foundation",
+  },
+  {
+    photo: "https://i.pravatar.cc/300?img=45",
+    name: "Rina Kartika",
+    isNativeSpeaker: false,
+    degree: "S1 Sastra Inggris",
+    university: "Universitas Airlangga",
+    scoreLabel: "TOEFL ITP 590",
+    yearsExperience: 5,
+    specialization: "Conversation & Confidence Building",
+  },
+  {
+    photo: "https://i.pravatar.cc/300?img=14",
+    name: "Ahmad Fauzi",
+    isNativeSpeaker: false,
+    degree: "S2 Linguistik Terapan",
+    university: "Universitas Indonesia",
+    scoreLabel: "IELTS 8.0",
+    yearsExperience: 7,
+    specialization: "IELTS Prep & Academic Writing",
+  },
+  {
+    photo: "https://i.pravatar.cc/300?img=48",
+    name: "Dewi Lestari",
+    isNativeSpeaker: false,
+    degree: "S1 Pendidikan Bahasa Inggris",
+    university: "Universitas Negeri Yogyakarta",
+    scoreLabel: "TOEFL ITP 605",
+    yearsExperience: 4,
+    specialization: "Kelas Anak & Remaja / Foundation",
+  },
+];
+---
+
+<Layout
+  title="Tim Pengajar & Native Speaker — Fantastico"
+  description="Kenali tutor kami, termasuk native speaker dengan kredensial terverifikasi."
+>
+  <PageHeader
+    title="Diajar Langsung oleh yang Kompeten."
+    subtitle='Bukan cuma "bisa bahasa Inggris" — setiap tutor kami punya kredensial yang bisa dipertanggungjawabkan.'
+  />
+
+  <section class="mx-auto max-w-6xl px-6 py-16">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        tutors.map((tutor, i) => (
+          <TutorCard
+            client:visible
+            index={i}
+            photo={tutor.photo}
+            name={tutor.name}
+            isNativeSpeaker={tutor.isNativeSpeaker}
+            degree={tutor.degree}
+            university={tutor.university}
+            scoreLabel={tutor.scoreLabel}
+            yearsExperience={tutor.yearsExperience}
+            specialization={tutor.specialization}
+          />
+        ))
+      }
+    </div>
+  </section>
+</Layout>
