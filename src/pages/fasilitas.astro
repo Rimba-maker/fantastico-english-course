@@ -6,18 +6,18 @@ import FacilityList from "../components/shared/FacilityList";
 import { waLink } from "../lib/site";
 
 const offlineFacilities = [
-  "🏠 Asrama & Kos (English Area 24 jam wajib berbahasa Inggris)",
-  "📚 Ruang kelas ber-AC, kapasitas kecil (maks. 10 siswa)",
-  "🍽️ Kantin & dapur umum",
-  "📶 WiFi area belajar",
-  "🎉 Kegiatan ekstra (movie night bahasa Inggris, English club)",
+  { icon: "home" as const, text: "Asrama & Kos (English Area 24 jam wajib berbahasa Inggris)" },
+  { icon: "book-open" as const, text: "Ruang kelas ber-AC, kapasitas kecil (maks. 10 siswa)" },
+  { icon: "utensils" as const, text: "Kantin & dapur umum" },
+  { icon: "wifi" as const, text: "WiFi area belajar" },
+  { icon: "party-popper" as const, text: "Kegiatan ekstra (movie night bahasa Inggris, English club)" },
 ];
 
 const onlineFacilities = [
-  "💻 Platform live class (Zoom/Google Meet) dengan rekaman tersedia",
-  "📄 Modul digital & worksheet interaktif",
-  "💬 Grup diskusi WhatsApp per batch untuk latihan sesama peserta",
-  "📊 Dashboard progress belajar pribadi (opsional, tergantung implementasi)",
+  { icon: "laptop" as const, text: "Platform live class (Zoom/Google Meet) dengan rekaman tersedia" },
+  { icon: "file-text" as const, text: "Modul digital & worksheet interaktif" },
+  { icon: "message-circle" as const, text: "Grup diskusi WhatsApp per batch untuk latihan sesama peserta" },
+  { icon: "bar-chart" as const, text: "Dashboard progress belajar pribadi (opsional, tergantung implementasi)" },
 ];
 ---
 
