@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 
 const cards = [
   {
-    emoji: "🏕️",
+    photo: "/images/offline-asrama.jpg",
     title: "Offline / Bootcamp (Asrama)",
     desc: "Immersive penuh — asrama, English Area 24 jam, tutor tinggal bersama. Untuk hasil paling maksimal.",
     price: "Mulai Rp 1.800.000",
@@ -10,7 +10,7 @@ const cards = [
     from: { x: -30 },
   },
   {
-    emoji: "💻",
+    photo: "/images/online-live-class.jpg",
     title: "Online",
     desc: "Live class rutin dari rumah/kantor — fleksibel tanpa harus pindah kota.",
     price: "Mulai Rp 650.000",
@@ -34,13 +34,15 @@ export default function DuaJalurBelajar() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             whileHover={{ y: -4 }}
-            className="group rounded-lg border border-hairline bg-canvas p-8 shadow-card transition-colors hover:border-navy"
+            className="group overflow-hidden rounded-lg border border-hairline bg-canvas shadow-card transition-colors hover:border-navy"
           >
-            <span className="text-3xl">{card.emoji}</span>
-            <h3 className="mt-4 text-heading-lg text-navy">{card.title}</h3>
-            <p className="mt-2 text-body-md text-ink-mute">{card.desc}</p>
-            <p className="mt-4 text-heading-sm font-semibold text-gold">{card.price}</p>
-            <p className="mt-6 text-button-sm text-navy group-hover:underline">Lihat Program →</p>
+            <img src={card.photo} alt={card.title} className="aspect-[16/10] w-full object-cover" loading="lazy" />
+            <div className="p-8">
+              <h3 className="text-heading-lg text-navy">{card.title}</h3>
+              <p className="mt-2 text-body-md text-ink-mute">{card.desc}</p>
+              <p className="mt-4 text-heading-sm font-semibold text-gold">{card.price}</p>
+              <p className="mt-6 text-button-sm text-navy group-hover:underline">Lihat Program →</p>
+            </div>
           </motion.a>
         ))}
       </div>
