@@ -1,0 +1,47 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/shared/PageHeader.astro";
+import ContactForm from "../components/kontak/ContactForm";
+import { siteConfig } from "../lib/site";
+
+const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(siteConfig.address)}&output=embed`;
+---
+
+<Layout
+  title="Kontak & Pendaftaran — Fantastico"
+  description="Hubungi Fantastico English Course untuk konsultasi dan pendaftaran program offline maupun online."
+>
+  <PageHeader title="Siap Upgrade Bahasa Inggrismu?" />
+
+  <section class="mx-auto max-w-5xl px-6 py-16">
+    <div class="grid gap-10 md:grid-cols-2">
+      <div>
+        <h2 class="text-heading-lg text-navy">Form Pendaftaran</h2>
+        <div class="mt-4">
+          <ContactForm client:idle />
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-heading-lg text-navy">Info Kontak</h2>
+        <ul class="mt-4 space-y-2 text-body-md text-ink-mute">
+          <li>📱 {siteConfig.phone}</li>
+          <li>✉️ {siteConfig.email}</li>
+          <li>📍 {siteConfig.address}</li>
+        </ul>
+
+        <div class="mt-6 overflow-hidden rounded-lg border border-hairline">
+          <iframe
+            src={mapSrc}
+            width="100%"
+            height="300"
+            style="border:0"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Lokasi Fantastico English Course"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
