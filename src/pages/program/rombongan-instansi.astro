@@ -1,0 +1,35 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHeader from "../../components/shared/PageHeader.astro";
+import RombonganBenefits from "../../components/program/RombonganBenefits";
+import { waLink } from "../../lib/site";
+---
+
+<Layout
+  title="Training Bahasa Inggris untuk Sekolah & Perusahaan — Fantastico"
+  description="Program kolektif untuk instansi, kurikulum custom, laporan progress peserta."
+>
+  <PageHeader
+    title="Training Bahasa Inggris untuk Tim atau Sekolahmu."
+    subtitle="Untuk sekolah, kampus, atau perusahaan yang ingin mengadakan program bahasa Inggris secara kolektif."
+  />
+
+  <section class="mx-auto max-w-4xl px-6 py-16 text-center">
+    <p class="text-body-md italic text-ink-mute">
+      Cocok untuk: sekolah/kampus yang mau program ekstrakurikuler intensif, perusahaan yang mau
+      upgrade skill karyawan, organisasi yang butuh persiapan bahasa Inggris massal untuk anggotanya.
+    </p>
+
+    <h2 class="mt-10 text-display-md text-navy">Yang Didapat</h2>
+    <RombonganBenefits client:visible />
+
+    <a
+      href={waLink("Halo, saya mau konsultasi kebutuhan Program Rombongan & Instansi.")}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mt-10 inline-block rounded-full bg-navy px-6 py-3 text-button-md text-white"
+    >
+      Konsultasi Kebutuhan Instansi via WhatsApp
+    </a>
+  </section>
+</Layout>
