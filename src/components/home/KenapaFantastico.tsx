@@ -1,24 +1,25 @@
 import { motion } from "motion/react";
+import { Languages, Users, FileCheck2, Target, type LucideIcon } from "lucide-react";
 import { fadeUp, staggerContainer } from "../motion/variants";
 
-const points = [
+const points: { icon: LucideIcon; title: string; desc: string }[] = [
   {
-    emoji: "👩‍🏫",
+    icon: Languages,
     title: "Akses Native Speaker",
     desc: "Sesi rutin dengan penutur asli, bukan cuma tutor lokal.",
   },
   {
-    emoji: "👥",
+    icon: Users,
     title: "Kelas Kecil, Maks. 10 Siswa",
     desc: "Riset pendidikan menunjukkan kelas kecil bikin partisipasi belajar jauh lebih tinggi.",
   },
   {
-    emoji: "📜",
+    icon: FileCheck2,
     title: "Legalitas Jelas",
     desc: "Terdaftar resmi, bukan lembaga abal-abal.",
   },
   {
-    emoji: "🎯",
+    icon: Target,
     title: "TOEFL & IELTS Ready",
     desc: "Dua jalur sertifikasi internasional, sesuai kebutuhanmu.",
   },
@@ -39,7 +40,7 @@ export default function KenapaFantastico() {
         >
           {points.map((point) => (
             <motion.div key={point.title} variants={fadeUp} className="rounded-lg bg-canvas p-6 shadow-card">
-              <span className="text-2xl">{point.emoji}</span>
+              <point.icon className="h-7 w-7 text-navy" strokeWidth={1.75} />
               <h3 className="mt-3 text-heading-sm font-semibold text-navy">{point.title}</h3>
               <p className="mt-2 text-body-md text-ink-mute">{point.desc}</p>
             </motion.div>
