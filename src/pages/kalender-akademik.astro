@@ -1,0 +1,35 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/shared/PageHeader.astro";
+import KalenderGrid from "../components/kalender/KalenderGrid";
+import { waLink } from "../lib/site";
+
+const allMonths = await getCollection("kalender-batch");
+const months = allMonths.map((entry) => ({ id: entry.id, ...entry.data })).sort((a, b) => a.id.localeCompare(b.id));
+---
+
+<Layout
+  title="Kalender Akademik & Jadwal Intake — Fantastico"
+  description="Cek tanggal pendaftaran dan mulai program bahasa Inggris sepanjang tahun."
+>
+  <PageHeader
+    title="Kalender Akademik Fantastico."
+    subtitle="Cek tanggal masuk (intake) tiap bulan — direncanakan dari Januari sampai Desember, supaya kamu bisa atur waktu terbaik untuk mulai."
+  />
+
+  <section class="mx-auto max-w-6xl px-6 py-16">
+    <KalenderGrid client:visible months={months} />
+
+    <div class="mt-10 text-center">
+      <a
+        href={waLink("Halo, saya mau tanya slot intake terdekat.")}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block rounded-full bg-navy px-6 py-3 text-button-md text-white"
+      >
+        Tanya Slot Terdekat via WhatsApp
+      </a>
+    </div>
+  </section>
+</Layout>
