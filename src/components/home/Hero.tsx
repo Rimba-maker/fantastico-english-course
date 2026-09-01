@@ -44,7 +44,7 @@ export default function Hero() {
         Belajar di Asrama, atau dari Rumah — Kamu yang Pilih.
       </motion.h1>
 
-      <motion.p variants={item} className="mx-auto mt-5 max-w-xl text-body-lg text-navy-subtle">
+      <motion.p variants={item} className="mx-auto mt-5 max-w-xl text-body-lg text-white/80">
         Program bahasa Inggris intensif offline (bootcamp asrama) dan online, dirancang untuk hasil
         yang bisa diukur — bukan sekadar janji lancar.
       </motion.p>
@@ -73,7 +73,7 @@ export default function Hero() {
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
           >
-            <p className="text-body-md text-navy-subtle">{active.blurb}</p>
+            <p className="text-body-md text-white/80">{active.blurb}</p>
             <p className="mt-1 text-heading-sm font-semibold text-gold">{active.price}</p>
           </motion.div>
         </AnimatePresence>
@@ -94,7 +94,7 @@ export default function Hero() {
         >
           Lihat Program {active.label} →
         </a>
-        <a href="/kalender-akademik/" className="text-button-sm text-navy-subtle underline-offset-4 hover:underline">
+        <a href="/kalender-akademik/" className="text-button-sm text-white/80 underline-offset-4 hover:underline">
           Lihat Kalender Akademik
         </a>
       </motion.div>

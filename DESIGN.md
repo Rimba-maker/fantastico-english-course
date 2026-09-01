@@ -115,7 +115,7 @@ typography:
     letterSpacing: 0
   micro-cap:
     fontFamily: "Inter, 'SF Pro Display', system-ui, -apple-system, sans-serif"
-    fontSize: 10px
+    fontSize: 11px
     fontWeight: 600
     lineHeight: 1.15
     letterSpacing: 0.4px
@@ -248,7 +248,7 @@ components:
     rounded: "{rounded.xs}"
     padding: 0px
   footer-light:
-    backgroundColor: "{colors.canvas}"
+    backgroundColor: "{colors.canvas-soft}"
     textColor: "{colors.ink-mute}"
     typography: "{typography.caption}"
     rounded: "{rounded.xs}"
@@ -328,13 +328,14 @@ Tabular figures (`tnum`) stay, but the brief widens from "money only" to **any n
 | `{typography.button-sm}` | 14px | 500 | 1.0 | 0 | Compact pill label |
 | `{typography.caption}` | 13px | 400 | 1.4 | 0 | Helper, table labels |
 | `{typography.micro}` | 11px | 400 | 1.4 | 0 | Fine print |
-| `{typography.micro-cap}` | 10px | 600 | 1.15 | 0.4px | All-caps eyebrow / badge label |
+| `{typography.micro-cap}` | 11px | 600 | 1.15 | 0.4px | All-caps eyebrow / badge label |
 
 ### Principles
 - **Thin weight stays on display only.** Display and pricing-tier-name tiers (56–22px) render at 300. Everything a general reader actually reads in paragraph form (body, headings below 22px, captions) runs at 400+ — Stripe's all-300 system suits developers skimming UI copy; Fantastico's audience includes parents and students reading full sentences, so legibility wins below the headline tier.
 - **Negative tracking on display only**, same curve as Stripe's original (-1.4px at 56px down to -0.2px at 22px).
 - **Tabular figures for anything scanned as a column** — prices, TOEFL/IELTS scores, calendar intake dates. `font-feature-settings: "tnum"`.
 - **No `ss01` stylistic set.** That feature was tied to Sohne's specific single-story-`a` character substitution; Inter doesn't carry the same brand meaning, so it's dropped rather than cargo-culted.
+- **11px is the functional-text floor.** `micro-cap` was originally 10px (matching Stripe's own eyebrow scale) but that's below the legibility floor for badge/label text people actually read (status badges, native-speaker badge) — bumped to 11px after an accessibility audit flagged it.
 
 ## Layout
 
@@ -413,7 +414,9 @@ Unchanged — `text-input` / `text-input-focused`, navy border on focus instead 
 
 **Tabular-Figure Data Type** — every price, test score, and calendar date uses `font-feature-settings: "tnum"` — the brand's quiet "we measure things" signal, now serving the PRD's own "hasil terukur" positioning instead of Stripe's financial-infrastructure one.
 
-**`link-on-light`** and **`footer-light`** — unchanged in structure, retinted to navy/ink-mute.
+**`link-on-light`** — unchanged in structure, retinted to navy/ink-mute.
+
+**`footer-light`** — background bumped from Stripe's pure `{colors.canvas}` to `{colors.canvas-soft}`: several pages (FAQ, Alumni, Fasilitas) end on a plain white section with no closing band, so a canvas-white footer would have zero visual boundary against the content above it. The soft off-white tint gives every page a consistent "footer zone" cue without needing a hard border. Audited and intentional, not drift.
 
 ## Do's and Don'ts
 
