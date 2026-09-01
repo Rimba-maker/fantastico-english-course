@@ -1,0 +1,53 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/shared/PageHeader.astro";
+import FacilityList from "../components/shared/FacilityList";
+import { waLink } from "../lib/site";
+
+const offlineFacilities = [
+  "🏠 Asrama & Kos (English Area 24 jam wajib berbahasa Inggris)",
+  "📚 Ruang kelas ber-AC, kapasitas kecil (maks. 10 siswa)",
+  "🍽️ Kantin & dapur umum",
+  "📶 WiFi area belajar",
+  "🎉 Kegiatan ekstra (movie night bahasa Inggris, English club)",
+];
+
+const onlineFacilities = [
+  "💻 Platform live class (Zoom/Google Meet) dengan rekaman tersedia",
+  "📄 Modul digital & worksheet interaktif",
+  "💬 Grup diskusi WhatsApp per batch untuk latihan sesama peserta",
+  "📊 Dashboard progress belajar pribadi (opsional, tergantung implementasi)",
+];
+---
+
+<Layout
+  title="Fasilitas Pendukung Belajar — Fantastico"
+  description="Fasilitas untuk peserta offline (asrama, English Area 24 jam, ruang kelas ber-AC) dan online (live class, modul digital, dashboard progress)."
+>
+  <PageHeader title="Fasilitas Pendukung Belajar." />
+
+  <section class="mx-auto max-w-5xl px-6 py-16">
+    <div class="grid gap-10 md:grid-cols-2">
+      <FacilityList client:visible title="Untuk Peserta Offline/Bootcamp" items={offlineFacilities} />
+      <FacilityList client:visible title="Untuk Peserta Online" items={onlineFacilities} />
+    </div>
+
+    <p class="mt-10 text-center text-caption italic text-ink-mute">
+      Detail aturan asrama & English Area sama seperti dijelaskan di halaman <a
+        href="/program/offline-bootcamp/"
+        class="text-navy not-italic underline-offset-4 hover:underline"
+      >Program Offline/Bootcamp</a>.
+    </p>
+
+    <div class="mt-10 text-center">
+      <a
+        href={waLink("Halo, saya mau tanya soal fasilitas Fantastico English Course.")}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block rounded-full bg-navy px-6 py-3 text-button-md text-white"
+      >
+        Tanya Fasilitas Lengkap via WhatsApp
+      </a>
+    </div>
+  </section>
+</Layout>
