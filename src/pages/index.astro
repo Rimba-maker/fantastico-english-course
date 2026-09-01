@@ -10,7 +10,7 @@ import CaraMulai from "../components/home/CaraMulai";
 import KalenderPreview from "../components/home/KalenderPreview";
 import RombonganTeaser from "../components/home/RombonganTeaser";
 import AlumniHasil from "../components/home/AlumniHasil";
-import FaqTeaser from "../components/home/FaqTeaser";
+import FaqSection from "../components/home/FaqSection";
 import { waLink } from "../lib/site";
 
 const allMonths = await getCollection("kalender-batch");
@@ -46,7 +46,7 @@ const testimonials = featuredAlumni
   <KalenderPreview client:visible months={upcomingMonths} />
   <RombonganTeaser client:visible />
   <AlumniHasil client:visible testimonials={testimonials} />
-  <FaqTeaser client:visible />
+  <FaqSection client:visible />
 
   <section class="bg-navy px-6 py-16 text-center text-white">
     <h2 class="text-display-md md:text-display-lg">Siap Upgrade Bahasa Inggrismu?</h2>

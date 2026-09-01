@@ -40,7 +40,6 @@ export const navInfoLainnya = [
   { label: "Profil Guru & Tutor", href: "/profile/guru-tutor/" },
   { label: "Fasilitas", href: "/fasilitas/" },
   { label: "Alumni & Testimoni", href: "/alumni/" },
-  { label: "FAQ", href: "/faq/" },
 ] as const;
 
 export const navPrimary = [
@@ -60,6 +59,5 @@ export const footerLinks = [
   { label: "Kalender Akademik", href: "/kalender-akademik/" },
   { label: "Biaya", href: "/biaya/" },
   { label: "Alumni & Testimoni", href: "/alumni/" },
-  { label: "FAQ", href: "/faq/" },
   { label: "Kontak & Pendaftaran", href: "/kontak/" },
 ] as const;

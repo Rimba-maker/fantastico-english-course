@@ -1,9 +1,23 @@
-import FaqAccordion from "../faq/FaqAccordion";
-
-const items = [
+export const faqs = [
   {
     q: "Bedanya offline dan online seberapa jauh hasilnya?",
     a: "Standar kurikulum sama, bedanya di intensitas interaksi (offline lebih immersive 24 jam). Online tetap efektif untuk yang konsisten mengikuti live class dan sesi feedback.",
+  },
+  {
+    q: "Apakah bisa pilih fokus TOEFL saja atau IELTS saja?",
+    a: "Bisa, sampaikan preferensi saat konsultasi — kurikulum bisa disesuaikan di paket 3 bulan/2 bulan online.",
+  },
+  {
+    q: "Bagaimana sistem native speaker, apakah selalu ada?",
+    a: "Tersedia di paket tertentu sesuai jadwal (lihat detail per program) — bukan di semua paket dasar.",
+  },
+  {
+    q: "Untuk program rombongan, minimal berapa peserta?",
+    a: "Minimal 15 peserta untuk harga khusus volume.",
+  },
+  {
+    q: "Apakah kalau ambil online bisa upgrade ke offline nanti?",
+    a: "Bisa, konsultasikan untuk penyesuaian biaya jika ingin lanjut ke jalur offline.",
   },
   {
     q: "Bagaimana kalau tidak lulus target skor TOEFL/IELTS di paket 3 bulan?",
@@ -14,21 +28,3 @@ const items = [
     a: "Sertifikat kelulusan dari lembaga kami menunjukkan penyelesaian program, bukan sertifikat resmi TOEFL/IELTS (yang harus diambil di lembaga penyelenggara resmi seperti ETS/British Council) — kami membantu persiapan, bukan menerbitkan skor resmi.",
   },
 ];
-
-export default function FaqTeaser() {
-  return (
-    <section className="mx-auto max-w-3xl px-6 py-20">
-      <h2 className="text-center text-display-md text-navy md:text-display-lg">Pertanyaan yang Sering Diajukan.</h2>
-
-      <div className="mt-10">
-        <FaqAccordion items={items} />
-      </div>
-
-      <div className="mt-8 text-center">
-        <a href="/faq/" className="text-button-md text-navy underline-offset-4 hover:underline">
-          Lihat FAQ Lengkap →
-        </a>
-      </div>
-    </section>
-  );
-}
