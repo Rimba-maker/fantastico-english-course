@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import PageHeader from "../../components/shared/PageHeader.astro";
+import PhotoCard from "../../components/shared/PhotoCard.astro";
 import RombonganBenefits from "../../components/program/RombonganBenefits";
 import { waLink } from "../../lib/site";
 ---
@@ -15,7 +16,14 @@ import { waLink } from "../../lib/site";
   />
 
   <section class="mx-auto max-w-4xl px-6 py-16 text-center">
-    <p class="text-body-md italic text-ink-mute">
+    <PhotoCard
+      src="/images/rombongan-training.jpg"
+      alt="Sesi training bahasa Inggris untuk instansi"
+      caption="Training kolektif untuk sekolah, kampus, dan perusahaan"
+      aspect="aspect-[16/9]"
+    />
+
+    <p class="mt-10 text-body-md italic text-ink-mute">
       Cocok untuk: sekolah/kampus yang mau program ekstrakurikuler intensif, perusahaan yang mau
       upgrade skill karyawan, organisasi yang butuh persiapan bahasa Inggris massal untuk anggotanya.
     </p>
