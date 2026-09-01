@@ -1,3 +1,9 @@
+## Project
+
+Fantastico English Course — multi-page marketing site (Astro 7, Tailwind CSS v4, TypeScript strict, `motion` for animated React islands). Full spec: `docs/internal/PRD.md` (gitignored — internal only, not part of the public repo).
+
+**Design system:** `DESIGN.md` at the repo root is the source of truth for colors, type, spacing, and components. Read it before writing any UI — don't invent tokens ad hoc.
+
 ## Agent skills
 
 ### Issue tracker
