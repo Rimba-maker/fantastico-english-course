@@ -1,0 +1,23 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/shared/PageHeader.astro";
+import AlumniGrid from "../components/alumni/AlumniGrid";
+
+const trackOrder = { offline: 0, online: 1, rombongan: 2 };
+const allAlumni = await getCollection("alumni");
+const testimonials = allAlumni
+  .map((entry) => ({ ...entry.data, quote: (entry.body ?? "").trim() }))
+  .sort((a, b) => trackOrder[a.track] - trackOrder[b.track]);
+---
+
+<Layout
+  title="Alumni & Hasil Terukur — Fantastico"
+  description="Kisah nyata alumni dengan skor TOEFL/IELTS dan pencapaian terukur."
+>
+  <PageHeader title="Hasil Nyata, Bukan Sekadar Klaim." />
+
+  <section class="mx-auto max-w-6xl px-6 py-16">
+    <AlumniGrid client:visible testimonials={testimonials} />
+  </section>
+</Layout>
