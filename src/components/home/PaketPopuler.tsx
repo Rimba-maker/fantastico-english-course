@@ -1,6 +1,5 @@
-import { motion } from "motion/react";
-import { Users } from "lucide-react";
 import ProgramTierCard from "../program/ProgramTierCard";
+import RombonganPricingCard from "../program/RombonganPricingCard";
 import { waLink } from "../../lib/site";
 
 export default function PaketPopuler() {
@@ -43,29 +42,7 @@ export default function PaketPopuler() {
             ctaLabel="Konsultasi via WhatsApp"
           />
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.16 }}
-            className="flex flex-col rounded-lg bg-canvas p-8 shadow-card"
-          >
-            <Users className="h-8 w-8 text-navy" strokeWidth={1.75} />
-            <h3 className="mt-4 text-heading-lg text-navy">Rombongan & Instansi</h3>
-            <p className="mt-3 text-display-md font-semibold text-gold">Custom Quote</p>
-            <p className="mt-3 text-caption text-ink-mute">Cocok untuk: sekolah, kampus, atau perusahaan (minimal 15 peserta)</p>
-            <ul className="mt-6 flex-1 space-y-2 text-body-md text-ink">
-              <li>Kurikulum custom sesuai kebutuhan</li>
-              <li>Onsite atau online, laporan progress berkala</li>
-              <li>Harga khusus volume</li>
-            </ul>
-            <a
-              href="/program/rombongan-instansi/"
-              className="mt-6 rounded-full bg-navy px-5 py-3 text-center text-button-md text-white"
-            >
-              Konsultasi Kebutuhan Instansi
-            </a>
-          </motion.div>
+          <RombonganPricingCard index={2} />
         </div>
 
         <div className="mt-10 text-center">
