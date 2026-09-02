@@ -6,6 +6,7 @@ import { X } from "lucide-react";
 import type { MonthData } from "./MonthCard";
 import { statusMeta } from "./statusMeta";
 import { waLink } from "../../lib/site";
+import { openWhatsApp } from "../../lib/openWhatsApp";
 import { monthDateFromName, parseIntakeDate } from "../../lib/kalender";
 import "react-day-picker/style.css";
 
@@ -96,7 +97,7 @@ export default function MonthDetailModal({ data, onClose }: { data: MonthData | 
               onDayClick={(date, modifiers) => {
                 if (!modifiers.intake) return;
                 const label = date.toLocaleDateString("id-ID", { day: "numeric", month: "long" });
-                window.open(waLink(`Halo, saya mau tanya slot intake ${label} ${data.year}.`), "_blank");
+                openWhatsApp(waLink(`Halo, saya mau tanya slot intake ${label} ${data.year}.`));
               }}
               modifiers={{ intake: data.intakeDates.map((label) => parseIntakeDate(label, data.year)) }}
               disabled={(date) =>

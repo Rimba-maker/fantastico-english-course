@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { waLink } from "../../lib/site";
+import { openWhatsApp } from "../../lib/openWhatsApp";
 
 const inputClass =
   "mt-1 w-full rounded-md border border-hairline-input px-3 py-2 text-body-md text-ink focus:border-navy focus:outline-none";
@@ -22,7 +23,7 @@ export default function ContactForm() {
       `Program yang diminati: ${program || "-"}`,
       `Preferensi bulan mulai: ${bulan || "-"}`,
     ].join("\n");
-    window.open(waLink(message), "_blank", "noopener,noreferrer");
+    openWhatsApp(waLink(message));
   }
 
   return (
