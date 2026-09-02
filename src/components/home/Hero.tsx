@@ -40,9 +40,14 @@ export default function Hero() {
       variants={fantasticoReveal}
       className="overflow-hidden bg-navy text-white"
     >
-      <div className="grid items-stretch gap-10 py-16 md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] md:gap-0 md:py-0">
-        <div className="px-6 py-4 text-center md:py-28 md:pr-10 md:pl-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] md:text-left">
-          <motion.h1 variants={item} className="text-display-lg md:text-display-xxl">
+      <div className="grid gap-10 py-16 md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] md:gap-0 md:py-0 md:min-h-[620px]">
+        <div className="relative px-6 text-center md:flex md:flex-col md:justify-center md:px-0 md:py-16 md:pr-10 md:pl-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] md:text-left">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -left-32 top-1/2 -z-10 hidden h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-navy-soft/25 blur-3xl md:block"
+          />
+
+          <motion.h1 variants={item} className="relative text-display-lg md:text-display-xxl">
             Belajar di Asrama, atau dari Rumah — Kamu yang Pilih.
           </motion.h1>
 
@@ -86,23 +91,26 @@ export default function Hero() {
 
           <motion.div
             variants={item}
-            className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row md:justify-start"
+            className="relative mt-8 flex flex-wrap items-center justify-center gap-3 md:justify-start"
           >
             <a
               href={waLink("Halo, saya mau daftar Fantastico English Course.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full bg-white px-6 py-3 text-button-md text-navy-press"
+              className="whitespace-nowrap rounded-full bg-white px-6 py-3 text-button-md text-navy-press"
             >
               Daftar Sekarang
             </a>
             <a
               href={active.href}
-              className="rounded-full border border-white/30 px-6 py-3 text-button-md text-white hover:bg-white/10"
+              className="whitespace-nowrap rounded-full border border-white/30 px-6 py-3 text-button-md text-white hover:bg-white/10"
             >
-              Lihat Program {active.label} →
+              Lihat Program →
             </a>
-            <a href="/kalender-akademik/" className="text-button-sm text-white/80 underline-offset-4 hover:underline">
+            <a
+              href="/kalender-akademik/"
+              className="whitespace-nowrap text-button-sm text-white/80 underline-offset-4 hover:underline"
+            >
               Lihat Kalender Akademik
             </a>
           </motion.div>
