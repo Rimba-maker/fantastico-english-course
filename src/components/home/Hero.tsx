@@ -38,10 +38,10 @@ export default function Hero() {
       initial="hidden"
       animate="visible"
       variants={fantasticoReveal}
-      className="bg-navy px-6 py-20 text-white md:py-28"
+      className="overflow-hidden bg-navy text-white"
     >
-      <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
-        <div className="text-center md:text-left">
+      <div className="grid items-stretch gap-10 py-16 md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] md:gap-0 md:py-0">
+        <div className="px-6 py-4 text-center md:py-28 md:pr-10 md:pl-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] md:text-left">
           <motion.h1 variants={item} className="text-display-lg md:text-display-xxl">
             Belajar di Asrama, atau dari Rumah — Kamu yang Pilih.
           </motion.h1>
@@ -108,14 +108,11 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        <motion.div
-          variants={item}
-          className="overflow-hidden rounded-xl border border-white/10 shadow-modal"
-        >
+        <motion.div variants={item} className="relative min-h-[320px] w-full">
           <img
             src="/images/hero-students.jpg"
             alt="Siswa belajar bahasa Inggris bersama"
-            className="aspect-[4/3] w-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover"
             loading="eager"
           />
         </motion.div>
