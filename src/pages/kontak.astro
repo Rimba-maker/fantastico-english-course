@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
 import PageHeader from "../components/shared/PageHeader.astro";
+import PhotoCard from "../components/shared/PhotoCard.astro";
 import ContactForm from "../components/kontak/ContactForm";
 import { siteConfig } from "../lib/site";
 
@@ -40,7 +41,11 @@ const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(siteConfig.ad
           </li>
         </ul>
 
-        <div class="mt-6 overflow-hidden rounded-lg border border-hairline">
+        <div class="mt-6">
+          <PhotoCard src="/images/perusahaan-lobby.jpg" alt="Gedung dan lobi Fantastico English Course" aspect="aspect-[16/9]" />
+        </div>
+
+        <div class="mt-4 overflow-hidden rounded-lg border border-hairline">
           <iframe
             src={mapSrc}
             width="100%"
