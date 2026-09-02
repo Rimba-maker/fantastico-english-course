@@ -21,10 +21,10 @@ const cards = [
 
 export default function DuaJalurBelajar() {
   return (
-    <section className="mx-auto max-w-6xl px-6 py-20">
-      <h2 className="text-center text-display-md text-navy md:text-display-lg">Dua Cara Belajar, Standar Sama.</h2>
+    <section className="py-20">
+      <h2 className="px-6 text-center text-display-md text-navy md:text-display-lg">Dua Cara Belajar, Standar Sama.</h2>
 
-      <div className="mt-10 grid gap-6 md:grid-cols-2">
+      <div className="mt-10 grid md:grid-cols-2">
         {cards.map((card) => (
           <motion.a
             key={card.title}
@@ -33,15 +33,20 @@ export default function DuaJalurBelajar() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            whileHover={{ y: -4 }}
-            className="group overflow-hidden rounded-lg border border-transparent bg-canvas shadow-card transition-colors hover:border-navy"
+            className="group relative flex min-h-[420px] items-end overflow-hidden md:min-h-[540px]"
           >
-            <img src={card.photo} alt={card.title} className="aspect-[16/10] w-full object-cover" loading="lazy" />
-            <div className="p-8">
-              <h3 className="text-heading-lg text-navy">{card.title}</h3>
-              <p className="mt-2 text-body-md text-ink-mute">{card.desc}</p>
+            <img
+              src={card.photo}
+              alt={card.title}
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-navy-press/95 via-navy-press/30 to-transparent" />
+            <div className="relative p-8 text-white lg:p-12">
+              <h3 className="text-heading-lg md:text-display-md">{card.title}</h3>
+              <p className="mt-2 max-w-sm text-body-md text-white/80">{card.desc}</p>
               <p className="mt-4 text-heading-sm font-semibold text-gold">{card.price}</p>
-              <p className="mt-6 text-button-sm text-navy group-hover:underline">Lihat Program →</p>
+              <p className="mt-6 text-button-sm text-white group-hover:underline">Lihat Program →</p>
             </div>
           </motion.a>
         ))}
