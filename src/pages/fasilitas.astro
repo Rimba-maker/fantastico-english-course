@@ -28,12 +28,19 @@ const onlineFacilities = [
   <PageHeader title="Fasilitas Pendukung Belajar." />
 
   <section class="mx-auto max-w-5xl px-6 py-16">
-    <PhotoCard
-      src="/images/fasilitas-classroom.jpg"
-      alt="Ruang kelas kecil untuk diskusi"
-      caption="Ruang kelas kapasitas kecil, maks. 10 siswa"
-      aspect="aspect-[21/9]"
-    />
+    <div class="grid gap-4 sm:grid-cols-3">
+      <PhotoCard
+        src="/images/fasilitas-classroom.jpg"
+        alt="Ruang kelas kecil untuk diskusi"
+        caption="Ruang kelas, maks. 10 siswa"
+      />
+      <PhotoCard src="/images/fasilitas-canteen.jpg" alt="Kantin tempat makan bersama" caption="Kantin & dapur umum" />
+      <PhotoCard
+        src="/images/fasilitas-lounge.jpg"
+        alt="Area belajar dengan akses WiFi"
+        caption="Area belajar & WiFi"
+      />
+    </div>
 
     <div class="mt-10 grid gap-10 md:grid-cols-2">
       <FacilityList client:visible title="Untuk Peserta Offline/Bootcamp" items={offlineFacilities} />
