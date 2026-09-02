@@ -16,7 +16,7 @@ type Mode = "offline" | "online";
 
 const modeContent: Record<Mode, { label: string; blurb: string; price: string; href: string }> = {
   offline: {
-    label: "Offline / Bootcamp",
+    label: "Offline",
     blurb: "Immersive penuh — asrama, English Area 24 jam, tutor tinggal bersama.",
     price: "Mulai Rp 1.800.000",
     href: "/program/offline-bootcamp/",
@@ -41,10 +41,10 @@ export default function Hero() {
       className="overflow-hidden bg-navy text-white"
     >
       <div className="grid gap-10 py-16 md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] md:gap-0 md:py-0 md:min-h-[620px]">
-        <div className="relative px-6 text-center md:flex md:flex-col md:justify-center md:px-0 md:py-16 md:pr-10 md:pl-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] md:text-left">
+        <div className="relative px-6 text-center md:flex md:flex-col md:justify-center md:px-10 md:py-16 md:text-left lg:px-14 xl:px-20">
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -left-32 top-1/2 -z-10 hidden h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-navy-soft/25 blur-3xl md:block"
+            className="pointer-events-none absolute -left-16 top-1/2 -z-10 hidden h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-navy-soft/25 blur-3xl md:block"
           />
 
           <motion.h1 variants={item} className="relative text-display-lg md:text-display-xxl">
@@ -58,14 +58,14 @@ export default function Hero() {
 
           <motion.div
             variants={item}
-            className="mx-auto mt-8 inline-flex rounded-full border border-white/20 bg-white/5 p-1 md:mx-0"
+            className="mx-auto mt-8 grid w-full max-w-64 grid-cols-2 rounded-full border border-white/20 bg-white/5 p-1 md:mx-0"
           >
             {(["offline", "online"] as Mode[]).map((m) => (
               <button
                 key={m}
                 type="button"
                 onClick={() => setMode(m)}
-                className={`rounded-full px-5 py-2 text-button-sm transition-colors ${
+                className={`rounded-full px-4 py-2 text-button-sm transition-colors ${
                   mode === m ? "bg-white text-navy-press" : "text-white/80 hover:text-white"
                 }`}
               >
