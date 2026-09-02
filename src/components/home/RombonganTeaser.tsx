@@ -3,13 +3,13 @@ import { fadeUp } from "../motion/variants";
 
 export default function RombonganTeaser() {
   return (
-    <section className="mx-auto max-w-6xl px-6 py-16">
+    <section className="bg-canvas-gold py-20">
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-80px" }}
         variants={fadeUp}
-        className="rounded-lg bg-canvas-gold px-8 py-12 text-center"
+        className="mx-auto max-w-2xl px-6 text-center"
       >
         <h2 className="text-display-md text-navy">Untuk Sekolah, Kampus, atau Perusahaan.</h2>
         <p className="mx-auto mt-3 max-w-xl text-body-md text-ink-mute">
