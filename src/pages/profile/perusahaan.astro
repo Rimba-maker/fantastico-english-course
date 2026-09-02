@@ -57,8 +57,19 @@ const misi = [
       <StatsRow client:visible />
     </div>
 
-    <p class="mt-12 text-caption text-ink-mute">
-      SK Diknas No. {siteConfig.legal.skDiknas} • NPSN {siteConfig.legal.npsn} • Badan Usaha: {siteConfig.legal.badanUsaha}
-    </p>
+    <div class="mt-12 grid items-center gap-6 rounded-lg bg-canvas p-8 text-left shadow-card sm:grid-cols-2">
+      <PhotoCard
+        src="/images/perusahaan-legalitas.jpg"
+        alt="Sertifikat dan dokumen legalitas resmi"
+        aspect="aspect-[4/3]"
+      />
+      <div>
+        <h2 class="text-heading-lg text-navy">Terdaftar Resmi.</h2>
+        <p class="mt-2 text-body-md text-ink-mute">
+          SK Diknas No. {siteConfig.legal.skDiknas} • NPSN {siteConfig.legal.npsn}
+        </p>
+        <p class="mt-1 text-body-md text-ink-mute">Badan Usaha: {siteConfig.legal.badanUsaha}</p>
+      </div>
+    </div>
   </section>
 </Layout>
