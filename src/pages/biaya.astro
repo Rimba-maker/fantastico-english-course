@@ -1,54 +1,81 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageHeader from "../components/shared/PageHeader.astro";
-import PriceTable from "../components/shared/PriceTable.astro";
+import ProgramTierCard from "../components/program/ProgramTierCard";
+import RombonganPricingCard from "../components/program/RombonganPricingCard";
+import { offlineTiers, onlineTiers } from "../lib/programs";
 import { waLink } from "../lib/site";
-
-const offlineRows = [
-  { paket: "Foundation Intensive", durasi: "1 Bulan", harga: "Rp 2.500.000" },
-  { paket: "Active Speaker", durasi: "2 Bulan", harga: "Rp 4.500.000" },
-  { paket: "Fluent & Test-Ready", durasi: "3 Bulan", harga: "Rp 6.500.000", featured: true },
-  { paket: "Program Holiday", durasi: "2 Minggu", harga: "Rp 1.800.000" },
-];
-
-const onlineRows = [
-  { paket: "Trial Sprint", durasi: "2 Minggu", harga: "Rp 650.000" },
-  { paket: "Regular Progress", durasi: "1 Bulan", harga: "Rp 1.200.000" },
-  { paket: "Deep Progress", durasi: "2 Bulan", harga: "Rp 2.200.000", featured: true },
-];
 ---
 
 <Layout
   title="Biaya & Paket — Fantastico"
-  description="Ringkasan biaya program offline dan online Fantastico English Course, plus info metode pembayaran."
+  description="Detail lengkap tiap paket offline dan online Fantastico English Course — bandingkan isi programnya, bukan cuma harga, sebelum daftar."
 >
   <PageHeader
-    title="Ringkasan Semua Biaya."
-    subtitle="Detail lengkap tiap paket ada di halaman Program masing-masing — ini rangkuman cepat untuk perbandingan."
+    title="Semua Paket & Biaya, Lengkap dengan Isinya."
+    subtitle="Bandingkan langsung apa yang kamu dapat di tiap paket — bukan cuma angka harga — supaya gampang milih mana yang paling cocok buat kamu."
   />
 
-  <section class="mx-auto max-w-4xl px-6 py-16">
-    <h2 class="text-heading-lg text-navy">Offline / Bootcamp</h2>
-    <div class="mt-4">
-      <PriceTable rows={offlineRows} />
+  <section class="mx-auto max-w-6xl px-6 py-16">
+    <h2 class="text-center text-display-md text-navy md:text-display-lg">Offline / Bootcamp</h2>
+    <p class="mx-auto mt-3 max-w-xl text-center text-body-lg text-ink-mute">
+      Immersive penuh — asrama, English Area 24 jam, tutor tinggal bersama.
+    </p>
+    <div class="mt-10 grid gap-6 md:grid-cols-2">
+      {
+        offlineTiers.map((tier, i) => (
+          <ProgramTierCard
+            client:visible
+            index={i}
+            icon={tier.icon}
+            title={tier.title}
+            price={tier.price}
+            suitableFor={tier.suitableFor}
+            features={tier.features}
+            featured={tier.featured}
+            ctaHref={waLink(`Halo, saya mau konsultasi program ${tier.title}.`)}
+            ctaLabel="Konsultasi via WhatsApp"
+          />
+        ))
+      }
     </div>
 
-    <h2 class="mt-12 text-heading-lg text-navy">Online</h2>
-    <div class="mt-4">
-      <PriceTable rows={onlineRows} />
+    <h2 class="mt-20 text-center text-display-md text-navy md:text-display-lg">Online</h2>
+    <p class="mx-auto mt-3 max-w-xl text-center text-body-lg text-ink-mute">
+      Live class rutin dari rumah/kantor — fleksibel tanpa harus pindah kota.
+    </p>
+    <div class="mt-10 grid gap-6 md:grid-cols-3">
+      {
+        onlineTiers.map((tier, i) => (
+          <ProgramTierCard
+            client:visible
+            index={i}
+            icon={tier.icon}
+            title={tier.title}
+            price={tier.price}
+            suitableFor={tier.suitableFor}
+            features={tier.features}
+            featured={tier.featured}
+            ctaHref={waLink(`Halo, saya mau konsultasi program ${tier.title}.`)}
+            ctaLabel="Konsultasi via WhatsApp"
+          />
+        ))
+      }
     </div>
 
-    <div class="mt-12 rounded-lg border border-hairline bg-canvas-soft p-6">
-      <h2 class="text-heading-sm font-semibold text-navy">Rombongan & Instansi</h2>
-      <p class="mt-2 text-body-md text-ink-mute">
-        Custom quote (minimal 15 peserta) — konsultasi via <a
-          href="/program/rombongan-instansi/"
-          class="text-navy underline-offset-4 hover:underline"
-        >WhatsApp</a>.
-      </p>
+    <h2 class="mt-20 text-center text-display-md text-navy md:text-display-lg">Rombongan & Instansi</h2>
+    <p class="mx-auto mt-3 max-w-xl text-center text-body-lg text-ink-mute">
+      Untuk sekolah, kampus, atau perusahaan — kurikulum dan harga disesuaikan kebutuhan (minimal 15 peserta).
+    </p>
+    <div class="mx-auto mt-10 max-w-md">
+      <RombonganPricingCard
+        ctaHref={waLink("Halo, saya mau konsultasi kebutuhan Program Rombongan & Instansi.")}
+        ctaLabel="Konsultasi via WhatsApp"
+        client:visible
+      />
     </div>
 
-    <div class="mt-8">
+    <div class="mt-20 rounded-lg border border-hairline bg-canvas-soft p-6 text-center">
       <h2 class="text-heading-sm font-semibold text-navy">Metode Pembayaran</h2>
       <p class="mt-2 text-body-md text-ink-mute">
         DP minimal 50%, pelunasan sebelum/saat program dimulai. Transfer bank atau QRIS.
@@ -62,7 +89,7 @@ const onlineRows = [
         rel="noopener noreferrer"
         class="inline-block rounded-full bg-navy px-6 py-3 text-button-md text-white"
       >
-        Konsultasi Paket yang Cocok via WhatsApp
+        Masih Bingung? Konsultasi Paket yang Cocok via WhatsApp
       </a>
     </div>
   </section>
