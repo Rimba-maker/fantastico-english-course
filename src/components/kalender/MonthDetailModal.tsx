@@ -107,10 +107,14 @@ export default function MonthDetailModal({ data, onClose }: { data: MonthData | 
               }
               components={{ DayButton: IntakeDayButton(statusMeta[data.status].className) }}
               classNames={{
-                root: "mt-4",
+                root: "mt-4 w-full",
+                months: "w-full",
+                month: "w-full",
                 month_caption: "hidden",
-                weekdays: "flex",
+                month_grid: "w-full border-collapse",
+                weekdays: "flex w-full",
                 weekday: "flex-1 text-center text-micro-cap uppercase text-ink-mute",
+                weeks: "block w-full",
                 week: "mt-1 flex w-full",
                 day: "flex-1 py-0.5 text-center",
               }}
