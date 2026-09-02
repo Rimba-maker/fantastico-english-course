@@ -3,41 +3,8 @@ import Layout from "../../layouts/Layout.astro";
 import PageHeader from "../../components/shared/PageHeader.astro";
 import PhotoCard from "../../components/shared/PhotoCard.astro";
 import ProgramTierCard from "../../components/program/ProgramTierCard";
+import { onlineTiers as tiers } from "../../lib/programs";
 import { waLink } from "../../lib/site";
-
-const tiers = [
-  {
-    icon: "zap" as const,
-    title: "Online 2 Minggu — Trial Sprint",
-    price: "Rp 650.000",
-    suitableFor: "Cocok untuk: coba dulu sebelum commit, atau butuh polish cepat sebelum interview/acara tertentu",
-    features: ["Live class via Zoom, 5x/minggu", "Modul digital + grup diskusi WhatsApp", "Sertifikat kelulusan"],
-  },
-  {
-    icon: "trending-up" as const,
-    title: "Online 1 Bulan — Regular Progress",
-    price: "Rp 1.200.000",
-    suitableFor: "Cocok untuk: yang mau belajar rutin tapi tetap fleksibel dari rumah/kantor",
-    features: [
-      "Semua di Trial Sprint",
-      "1x sesi private feedback dengan tutor",
-      "Akses rekaman kelas (untuk yang ketinggalan sesi)",
-    ],
-  },
-  {
-    icon: "target" as const,
-    title: "Online 2 Bulan — Deep Progress",
-    price: "Rp 2.200.000",
-    suitableFor: "Cocok untuk: yang serius mau level up signifikan tanpa harus pindah ke asrama",
-    features: [
-      "Live class rutin + modul TOEFL/IELTS prep",
-      "1x sesi native speaker online/minggu",
-      "2x sesi private feedback dengan tutor",
-      "Sertifikat kelulusan",
-    ],
-    featured: true,
-  },
-];
 ---
 
 <Layout
