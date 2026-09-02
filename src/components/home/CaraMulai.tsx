@@ -26,8 +26,8 @@ const steps: { icon: LucideIcon; step: string; title: string; desc: string }[] =
 export default function CaraMulai() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-20">
-      <h2 className="text-center text-display-md text-navy md:text-display-lg">Cara Mulai.</h2>
-      <p className="mx-auto mt-3 max-w-xl text-center text-body-lg text-ink-mute">
+      <h2 className="text-center text-display-md text-navy md:text-display-lg md:text-left">Cara Mulai.</h2>
+      <p className="mt-3 max-w-xl text-center text-body-lg text-ink-mute md:mx-0 md:text-left">
         Tiga langkah, tanpa proses berbelit.
       </p>
 

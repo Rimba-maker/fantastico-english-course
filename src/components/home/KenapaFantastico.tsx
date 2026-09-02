@@ -29,7 +29,7 @@ export default function KenapaFantastico() {
   return (
     <section className="bg-canvas-soft px-6 py-20">
       <div className="mx-auto max-w-6xl">
-        <h2 className="text-center text-display-md text-navy md:text-display-lg">Kenapa Pilih Kami?</h2>
+        <h2 className="text-center text-display-md text-navy md:text-display-lg md:text-left">Kenapa Pilih Kami?</h2>
 
         <motion.div
           initial="hidden"

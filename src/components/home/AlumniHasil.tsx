@@ -5,7 +5,7 @@ import TestimonialCard, { type Testimonial } from "../alumni/TestimonialCard";
 export default function AlumniHasil({ testimonials }: { testimonials: Testimonial[] }) {
   return (
     <section className="mx-auto max-w-6xl px-6 py-20">
-      <h2 className="text-center text-display-md text-navy md:text-display-lg">Bukan Cuma Lancar — Ini Hasilnya.</h2>
+      <h2 className="text-center text-display-md text-navy md:text-display-lg md:text-left">Bukan Cuma Lancar — Ini Hasilnya.</h2>
 
       <motion.div
         initial="hidden"
