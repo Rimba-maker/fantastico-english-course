@@ -5,13 +5,7 @@ import FaqAccordion from "../components/faq/FaqAccordion";
 import { faqs } from "../lib/faqs";
 ---
 
-<Layout
-  title="FAQ — Fantastico"
-  description="Pertanyaan yang sering diajukan seputar program offline, online, dan rombongan Fantastico English Course."
->
-  <PageHeader title="Pertanyaan yang Sering Diajukan." />
-
-  <section class="mx-auto max-w-3xl px-6 py-16">
-    <FaqAccordion client:visible items={faqs} />
-  </section>
+<Layout title="FAQ — Fantastico" description="Jawaban seputar program offline, online, rombongan, sertifikat, dan pendaftaran Fantastico English Course.">
+  <PageHeader title="Pertanyaan kecil. Keputusan yang lebih jelas." subtitle="Temukan jawaban seputar format belajar, pilihan program, dan pendaftaran. Kalau kebutuhanmu lebih spesifik, lanjutkan dengan konsultasi." />
+  <section class="section-shell detail-section"><div class="grid gap-10 lg:grid-cols-[.7fr_1.3fr]"><aside><h2 class="section-heading">Sebelum kamu mulai.</h2><p class="section-lead mt-4">Luangkan waktu untuk memahami cara belajar dan cakupan paketnya.</p><figure class="mt-7"><img src="/images/pexels/tutor-session.webp" alt="Ilustrasi diskusi pendampingan belajar" width="900" height="675" loading="lazy" class="aspect-[4/3] w-full rounded-2xl object-cover" /><figcaption class="media-note mt-2">Ilustrasi percakapan belajar — foto Pexels, bukan sesi tutor Fantastico.</figcaption></figure><a href="/kontak/" class="button-secondary mt-6">Tanyakan kebutuhanmu</a></aside><div><FaqAccordion client:load items={faqs} /><p class="mt-6 text-sm leading-relaxed text-ink-secondary">Sertifikat kelulusan program bukan skor tes TOEFL/IELTS resmi. Cakupan native speaker, rekaman kelas, jadwal, serta ketentuan pengulangan materi mengikuti paket dan perlu dikonfirmasi dengan admin.</p><div class="mt-7 flex flex-wrap gap-5"><a href="/biaya/" class="text-link">Lihat biaya & paket</a><a href="/kalender-akademik/" class="text-link">Cek kalender intake</a></div></div></div></section>
 </Layout>
