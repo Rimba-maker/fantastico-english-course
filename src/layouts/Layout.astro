@@ -22,10 +22,12 @@ const { title, description } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title} | {siteConfig.name}</title>
     <meta name="description" content={description} />
+    <link rel="preload" href="/fonts/bricolage-700.ttf" as="font" type="font/ttf" crossorigin />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
     <Navbar />
-    <main>
+    <main id="main-content">
       <slot />
     </main>
     <Footer />

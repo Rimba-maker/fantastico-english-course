@@ -1,95 +1,90 @@
 ---
 import { Icon } from "astro-icon/components";
-import { siteConfig, waLink, navProgram, navInfoLainnya, navPrimary } from "../../lib/site";
+import { navProgram, navInfoLainnya } from "../../lib/site";
+const pathname = Astro.url.pathname;
+const isActive = (href: string) => pathname === href;
 ---
-
-<header class="sticky top-0 z-50 border-b border-hairline bg-canvas">
-  <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-    <a href="/" class="text-heading-sm font-semibold text-navy">
-      {siteConfig.name}
+<header class="site-header">
+  <nav class="section-shell nav-shell" aria-label="Navigasi utama">
+    <a class="wordmark" href="/" aria-label="Fantastico English Course — Beranda">
+      <span class="brand-symbol"><Icon name="lucide:book-open" aria-hidden="true" /></span>
+      <span><strong>fantastico<span class="brand-dot">.</span></strong><small>ENGLISH COURSE</small></span>
     </a>
-
-    <input type="checkbox" id="nav-toggle" class="peer sr-only" />
-
-    <div
-      class="fixed inset-x-0 top-[65px] hidden max-h-[calc(100vh-65px)] flex-col gap-1 overflow-y-auto border-b border-hairline bg-canvas px-6 py-4 peer-checked:flex md:static md:flex md:max-h-none md:flex-row md:items-center md:gap-8 md:overflow-visible md:border-none md:p-0"
-    >
-      <a href="/" class="rounded-md px-2 py-2 text-body-md text-ink hover:text-navy md:px-0">
-        Beranda
-      </a>
-
-      <div class="group relative">
-        <button
-          type="button"
-          aria-haspopup="true"
-          class="flex w-full items-center justify-between gap-1 rounded-md px-2 py-2 text-body-md text-ink hover:text-navy md:w-auto md:px-0"
-        >
-          Program <Icon name="lucide:chevron-down" class="h-4 w-4" aria-hidden="true" />
-        </button>
-        <div
-          class="static mt-1 flex flex-col gap-1 pl-4 md:absolute md:left-0 md:top-full md:mt-0 md:hidden md:min-w-56 md:flex-col md:rounded-lg md:border md:border-hairline md:bg-canvas md:p-2 md:shadow-modal md:group-hover:flex md:group-focus-within:flex"
-        >
-          {
-            navProgram.map((item) => (
-              <a
-                href={item.href}
-                class="rounded-md px-3 py-2 text-body-md text-ink hover:bg-canvas-soft hover:text-navy"
-              >
-                {item.label}
-              </a>
-            ))
-          }
-        </div>
-      </div>
-
-      {
-        navPrimary.slice(1).map((item) => (
-          <a href={item.href} class="rounded-md px-2 py-2 text-body-md text-ink hover:text-navy md:px-0">
-            {item.label}
-          </a>
-        ))
-      }
-
-      <div class="group relative">
-        <button
-          type="button"
-          aria-haspopup="true"
-          class="flex w-full items-center justify-between gap-1 rounded-md px-2 py-2 text-body-md text-ink hover:text-navy md:w-auto md:px-0"
-        >
-          Info Lainnya <Icon name="lucide:chevron-down" class="h-4 w-4" aria-hidden="true" />
-        </button>
-        <div
-          class="static mt-1 flex flex-col gap-1 pl-4 md:absolute md:left-0 md:top-full md:mt-0 md:hidden md:min-w-56 md:flex-col md:rounded-lg md:border md:border-hairline md:bg-canvas md:p-2 md:shadow-modal md:group-hover:flex md:group-focus-within:flex"
-        >
-          {
-            navInfoLainnya.map((item) => (
-              <a
-                href={item.href}
-                class="rounded-md px-3 py-2 text-body-md text-ink hover:bg-canvas-soft hover:text-navy"
-              >
-                {item.label}
-              </a>
-            ))
-          }
-        </div>
-      </div>
-
-      <a
-        href={waLink("Halo, saya mau daftar Fantastico English Course.")}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="mt-2 rounded-full bg-navy px-4 py-2 text-center text-button-md text-white md:mt-0"
-      >
-        Daftar Sekarang
-      </a>
+    <button class="menu-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Buka menu navigasi"><Icon name="lucide:menu" aria-hidden="true" /></button>
+    <div id="primary-navigation" class="nav-links">
+      <a href="/" aria-current={isActive("/") ? "page" : undefined}>Beranda</a>
+      <details class="nav-dropdown">
+        <summary>Program <Icon name="lucide:chevron-down" aria-hidden="true" /></summary>
+        <div class="dropdown-panel">{navProgram.map(item => <a href={item.href} aria-current={isActive(item.href) ? "page" : undefined}>{item.label}<Icon name="lucide:arrow-up-right" aria-hidden="true" /></a>)}</div>
+      </details>
+      <a href="/kalender-akademik/" aria-current={isActive("/kalender-akademik/") ? "page" : undefined}>Kalender</a>
+      <a href="/biaya/" aria-current={isActive("/biaya/") ? "page" : undefined}>Biaya & paket</a>
+      <details class="nav-dropdown">
+        <summary>Tentang kami <Icon name="lucide:chevron-down" aria-hidden="true" /></summary>
+        <div class="dropdown-panel">{[...navInfoLainnya, {label: "FAQ", href: "/faq/"}].map(item => <a href={item.href} aria-current={isActive(item.href) ? "page" : undefined}>{item.label}<Icon name="lucide:arrow-up-right" aria-hidden="true" /></a>)}</div>
+      </details>
+      <a class="button-primary nav-cta" href="/kontak/">Mulai konsultasi <Icon name="lucide:arrow-up-right" aria-hidden="true" /></a>
     </div>
-
-    <label
-      for="nav-toggle"
-      class="cursor-pointer rounded-md p-2 text-navy peer-focus-visible:ring-2 peer-focus-visible:ring-gold peer-focus-visible:ring-offset-2 md:hidden"
-      aria-label="Buka menu"
-    >
-      <Icon name="lucide:menu" class="h-6 w-6" />
-    </label>
   </nav>
 </header>
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>(".menu-toggle");
+  const navigation = document.querySelector<HTMLElement>("#primary-navigation");
+  toggle?.addEventListener("click", () => {
+    const expanded = toggle.getAttribute("aria-expanded") !== "true";
+    toggle.setAttribute("aria-expanded", String(expanded));
+    toggle.setAttribute("aria-label", expanded ? "Tutup menu navigasi" : "Buka menu navigasi");
+    navigation?.classList.toggle("is-open", expanded);
+  });
+  const dropdowns = [...document.querySelectorAll<HTMLDetailsElement>(".nav-dropdown")];
+  dropdowns.forEach(dropdown => dropdown.addEventListener("toggle", () => {
+    if (dropdown.open) dropdowns.forEach(other => { if (other !== dropdown) other.open = false; });
+  }));
+  document.addEventListener("click", event => {
+    if (!(event.target instanceof Element) || event.target.closest(".nav-dropdown")) return;
+    dropdowns.forEach(dropdown => { dropdown.open = false; });
+  });
+  document.addEventListener("keydown", event => {
+    if (event.key !== "Escape") return;
+    const openDropdown = dropdowns.find(dropdown => dropdown.open);
+    if (openDropdown) { openDropdown.open = false; openDropdown.querySelector("summary")?.focus(); }
+    else if (toggle?.getAttribute("aria-expanded") === "true") { toggle.click(); toggle.focus(); }
+  });
+</script>
+<style>
+  .site-header { position: sticky; top: 0; z-index: 50; background: var(--color-canvas); border-bottom: 1px solid var(--color-hairline); }
+  .nav-shell { display: flex; align-items: center; justify-content: space-between; min-height: 92px; gap: 28px; }
+  .wordmark { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+  .brand-symbol { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px; background: var(--color-navy); color: white; }
+  .brand-symbol svg { width: 24px; height: 24px; }
+  .wordmark strong { display: block; font-family: var(--font-display); font-size: 27px; line-height: 1; letter-spacing: -.04em; }
+  .brand-dot { color: #876516; }
+  .wordmark small { display: block; font-size: 9px; font-weight: 600; letter-spacing: .19em; margin-top: 6px; }
+  .nav-links { display: flex; align-items: center; gap: 27px; font-size: 13px; font-weight: 600; }
+  .nav-links > a:not(.nav-cta) { padding-block: 14px; }
+  .nav-links a[aria-current="page"] { text-decoration: underline; text-decoration-color: var(--color-gold); text-decoration-thickness: 2px; text-underline-offset: 9px; }
+  .nav-links svg { width: 16px; height: 16px; }
+  .nav-dropdown { position: relative; }
+  summary { display: flex; align-items: center; gap: 5px; list-style: none; padding-block: 14px; }
+  summary::-webkit-details-marker { display: none; }
+  .dropdown-panel { position: absolute; top: 100%; right: 0; width: 250px; padding: 10px; border-radius: 12px; background: white; box-shadow: var(--shadow-modal); }
+  .dropdown-panel a { display: flex; justify-content: space-between; align-items: center; padding: 12px; border-radius: 6px; }
+  .dropdown-panel a:hover { background: var(--color-canvas-soft); }
+  .nav-cta { font-size: 12px; padding: 13px 19px; }
+  .menu-toggle { display: none; width: 44px; height: 44px; align-items: center; justify-content: center; }
+  .menu-toggle svg { width: 24px; height: 24px; }
+  @media (max-width: 1100px) {
+    .nav-shell { min-height: 80px; }
+    .nav-links { gap: 16px; font-size: 12px; }
+    .wordmark strong { font-size: 23px; }
+    .brand-symbol { width: 36px; height: 36px; }
+  }
+  @media (max-width: 950px) {
+    .menu-toggle { display: flex; }
+    .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 20px; flex-direction: column; align-items: stretch; gap: 4px; max-height: calc(100dvh - 80px); overflow-y: auto; border-bottom: 1px solid var(--color-hairline); font-size: 15px; }
+    .nav-links.is-open { display: flex; }
+    summary { justify-content: space-between; }
+    .dropdown-panel { position: static; width: auto; padding: 0 10px 10px; box-shadow: none; background: var(--color-canvas-soft); }
+    .nav-cta { margin-top: 12px; font-size: 14px; }
+  }
+</style>
