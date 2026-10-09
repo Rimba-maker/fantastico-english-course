@@ -1,130 +1,53 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
+import { ArrowUpRight, ArrowRight, MapPin, Monitor, Check } from "lucide-react";
 import { waLink } from "../../lib/site";
 
-const fantasticoReveal = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" as const, staggerChildren: 0.12 } },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" as const } },
-};
-
 type Mode = "offline" | "online";
-
-const modeContent: Record<Mode, { label: string; blurb: string; price: string; href: string }> = {
-  offline: {
-    label: "Offline",
-    blurb: "Immersive penuh — asrama, English Area 24 jam, tutor tinggal bersama.",
-    price: "Mulai Rp 1.800.000",
-    href: "/program/offline-bootcamp/",
-  },
-  online: {
-    label: "Online",
-    blurb: "Live class rutin dari rumah/kantor — fleksibel tanpa harus pindah kota.",
-    price: "Mulai Rp 650.000",
-    href: "/program/online/",
-  },
-};
+const modes = {
+  offline: { label: "Offline / Bootcamp", title: "Belajar bersama, tumbuh bersama.", description: "Asrama, English Area 24 jam, dan latihan langsung bersama tutor.", price: "Rp 1.800.000", href: "/program/offline-bootcamp/", photo: "campus-group", alt: "Ilustrasi mahasiswa belajar bersama di perpustakaan", icon: MapPin },
+  online: { label: "Kelas Online", title: "Tujuan besar, dari ruang belajarmu.", description: "Live class, feedback tutor, dan waktu belajar dari rumah atau kantor.", price: "Rp 650.000", href: "/program/online/", photo: "online-study", alt: "Ilustrasi belajar online menggunakan laptop", icon: Monitor },
+} as const;
 
 export default function Hero() {
   const [mode, setMode] = useState<Mode>("offline");
-  const active = modeContent[mode];
-
+  const reducedMotion = useReducedMotion();
+  const active = modes[mode];
+  const SceneIcon = active.icon;
   return (
-    <motion.section
-      initial="hidden"
-      animate="visible"
-      variants={fantasticoReveal}
-      className="overflow-hidden bg-navy text-white"
-    >
-      <div className="grid gap-10 py-16 md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] md:gap-0 md:py-0 md:min-h-[620px]">
-        <div className="relative px-6 text-center md:flex md:flex-col md:justify-center md:px-10 md:py-16 md:text-left lg:px-14 xl:px-20">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -left-16 top-1/2 -z-10 hidden h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-navy-soft/25 blur-3xl md:block"
-          />
-
-          <motion.h1 variants={item} className="relative text-display-lg md:text-display-xxl">
-            Belajar di Asrama, atau dari Rumah — Kamu yang Pilih.
-          </motion.h1>
-
-          <motion.p variants={item} className="mx-auto mt-5 max-w-xl text-body-lg text-white/80 md:mx-0">
-            Program bahasa Inggris intensif offline (bootcamp asrama) dan online, dirancang untuk hasil
-            yang bisa diukur — bukan sekadar janji lancar.
-          </motion.p>
-
-          <motion.div
-            variants={item}
-            className="mx-auto mt-8 grid w-full max-w-64 grid-cols-2 rounded-full border border-white/20 bg-white/5 p-1 md:mx-0"
-          >
-            {(["offline", "online"] as Mode[]).map((m) => (
-              <button
-                key={m}
-                type="button"
-                onClick={() => setMode(m)}
-                className={`rounded-full px-4 py-2 text-button-sm transition-colors ${
-                  mode === m ? "bg-white text-navy-press" : "text-white/80 hover:text-white"
-                }`}
-              >
-                {modeContent[m].label}
-              </button>
-            ))}
-          </motion.div>
-
-          <div className="mt-6">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={mode}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.25, ease: "easeOut" }}
-              >
-                <p className="text-body-md text-white/80">{active.blurb}</p>
-                <p className="mt-1 text-heading-sm font-semibold text-gold">{active.price}</p>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          <motion.div
-            variants={item}
-            className="relative mt-8 flex flex-wrap items-center justify-center gap-3 md:justify-start"
-          >
-            <a
-              href={waLink("Halo, saya mau daftar Fantastico English Course.")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="whitespace-nowrap rounded-full bg-white px-6 py-3 text-button-md text-navy-press"
-            >
-              Daftar Sekarang
-            </a>
-            <a
-              href={active.href}
-              className="whitespace-nowrap rounded-full border border-white/30 px-6 py-3 text-button-md text-white hover:bg-white/10"
-            >
-              Lihat Program →
-            </a>
-            <a
-              href="/kalender-akademik/"
-              className="whitespace-nowrap text-button-sm text-white/80 underline-offset-4 hover:underline"
-            >
-              Lihat Kalender Akademik
-            </a>
-          </motion.div>
+    <section className="home-hero section-shell" aria-label="Pilihan program bahasa Inggris">
+      <div className="hero-copy">
+        <h1>Bahasa Inggris<br />untuk langkah<br /><span>besarmu.</span></h1>
+        <p className="hero-intro">Dari percakapan pertama hingga persiapan TOEFL & IELTS. Temukan cara belajar yang cocok untuk tujuan dan keseharianmu.</p>
+        <div className="hero-actions">
+          <a className="button-primary" href={waLink("Halo, saya ingin konsultasi pilihan program Fantastico.")} target="_blank" rel="noopener noreferrer">Temukan programmu <ArrowUpRight size={18} aria-hidden="true" /></a>
+          <a className="text-link" href="/kalender-akademik/">Lihat jadwal belajar <ArrowRight size={17} aria-hidden="true" /></a>
         </div>
-
-        <motion.div variants={item} className="relative min-h-[320px] w-full">
-          <img
-            src="/images/hero-students.jpg"
-            alt="Siswa belajar bahasa Inggris bersama"
-            className="absolute inset-0 h-full w-full object-cover"
-            loading="eager"
-          />
-        </motion.div>
+        <div className="hero-choice">
+          <div className="mode-selector" role="group" aria-label="Pilih jalur belajar">
+            {(Object.keys(modes) as Mode[]).map(key => {
+              const ModeIcon = modes[key].icon;
+              return <button key={key} type="button" aria-pressed={mode === key} onClick={() => setMode(key)}><ModeIcon size={16} aria-hidden="true" />{modes[key].label}</button>;
+            })}
+          </div>
+          <div className="mode-description" aria-live="polite">
+            <p>{active.description}</p>
+            <a className="mode-price" href={active.href}><span>Mulai <strong>{active.price}</strong></span><ArrowUpRight size={19} aria-hidden="true" /></a>
+          </div>
+        </div>
       </div>
-    </motion.section>
+      <div className="hero-gallery">
+        <div className="hero-main-photo">
+          <motion.img key={active.photo} src={`/images/pexels/${active.photo}.webp`} alt={active.alt} width="1400" height="1000" fetchPriority="high" initial={{ filter: reducedMotion ? "blur(0px)" : "blur(3px)", scale: reducedMotion ? 1 : 1.025 }} animate={{ filter: "blur(0px)", scale: 1 }} transition={{ duration: reducedMotion ? 0 : .45, ease: [.16, 1, .3, 1] }} />
+          <span className="photo-scene"><SceneIcon size={14} aria-hidden="true" />{active.label}</span>
+        </div>
+        <div className="hero-gallery-bottom">
+          <img src="/images/pexels/community-outdoor.webp" alt="Ilustrasi mahasiswa belajar bersama di luar ruangan" width="1000" height="750" loading="eager" />
+          <div className="hero-scene-copy"><Check size={21} aria-hidden="true" /><h2>{active.title}</h2><p>Satu tujuan.<br />Dua cara untuk memulai.</p></div>
+          <img src="/images/pexels/study-notes.webp" alt="Ilustrasi catatan untuk latihan bahasa" width="1000" height="750" loading="eager" />
+        </div>
+        <p className="hero-photo-note">Suasana belajar sebagai inspirasi · Foto ilustrasi dari Pexels</p>
+      </div>
+    </section>
   );
 }
