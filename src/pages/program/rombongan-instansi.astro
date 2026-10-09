@@ -1,43 +1,14 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import PageHeader from "../../components/shared/PageHeader.astro";
-import PhotoCard from "../../components/shared/PhotoCard.astro";
 import RombonganBenefits from "../../components/program/RombonganBenefits";
+import RombonganPricingCard from "../../components/program/RombonganPricingCard";
 import { waLink } from "../../lib/site";
 ---
 
-<Layout
-  title="Training Bahasa Inggris untuk Sekolah & Perusahaan — Fantastico"
-  description="Program kolektif untuk instansi, kurikulum custom, laporan progress peserta."
->
-  <PageHeader
-    title="Training Bahasa Inggris untuk Tim atau Sekolahmu."
-    subtitle="Untuk sekolah, kampus, atau perusahaan yang ingin mengadakan program bahasa Inggris secara kolektif."
-  />
-
-  <section class="mx-auto max-w-4xl px-6 py-16 text-center">
-    <PhotoCard
-      src="/images/rombongan-training.jpg"
-      alt="Sesi training bahasa Inggris untuk instansi"
-      caption="Training kolektif untuk sekolah, kampus, dan perusahaan"
-      aspect="aspect-[16/9]"
-    />
-
-    <p class="mt-10 text-body-md italic text-ink-mute">
-      Cocok untuk: sekolah/kampus yang mau program ekstrakurikuler intensif, perusahaan yang mau
-      upgrade skill karyawan, organisasi yang butuh persiapan bahasa Inggris massal untuk anggotanya.
-    </p>
-
-    <h2 class="mt-10 text-display-md text-navy">Yang Didapat</h2>
-    <RombonganBenefits client:visible />
-
-    <a
-      href={waLink("Halo, saya mau konsultasi kebutuhan Program Rombongan & Instansi.")}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="mt-10 inline-block rounded-full bg-navy px-6 py-3 text-button-md text-white"
-    >
-      Konsultasi Kebutuhan Instansi via WhatsApp
-    </a>
-  </section>
+<Layout title="Training Bahasa Inggris untuk Sekolah & Perusahaan — Fantastico" description="Training kolektif minimal 15 peserta untuk sekolah, kampus, dan perusahaan. Kurikulum custom, onsite atau online, serta laporan progress.">
+  <PageHeader title="Bawa seluruh tim ke langkah berikutnya." subtitle="Training bahasa Inggris untuk sekolah, kampus, atau perusahaan. Kurikulum dan format belajar disesuaikan dengan kebutuhan kelompokmu." />
+  <section class="section-shell detail-section"><div class="grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-center"><figure><img src="/images/pexels/team-workshop.webp" alt="Ilustrasi tim bekerja dan berdiskusi dalam workshop" width="1200" height="800" loading="lazy" class="aspect-[4/3] w-full rounded-2xl object-cover" /><figcaption class="media-note mt-3">Ilustrasi workshop tim — foto Pexels, bukan dokumentasi partner atau peserta Fantastico.</figcaption></figure><div><h2 class="section-heading">Satu kelompok.<br />Tujuan yang jelas.</h2><p class="section-lead mt-4">Untuk sekolah atau kampus yang ingin program ekstrakurikuler intensif, perusahaan yang ingin meningkatkan skill karyawan, dan organisasi yang membutuhkan persiapan bahasa Inggris bersama.</p><p class="mt-5 text-base font-semibold text-navy">Minimal 15 peserta. Format onsite atau online.</p><a href="#cakupan" class="text-link mt-5 inline-block">Lihat cakupan training</a></div></div></section>
+  <section id="cakupan" class="detail-section bg-canvas-soft"><div class="section-shell grid gap-10 md:grid-cols-[1.25fr_1fr]"><div><h2 class="section-heading">Dirancang untuk kebutuhan instansi.</h2><RombonganBenefits /></div><RombonganPricingCard ctaHref={waLink("Halo, saya mau konsultasi kebutuhan Program Rombongan & Instansi.")} ctaLabel="Konsultasi kebutuhan instansi" /></div></section>
+  <section class="section-shell detail-section"><div class="grid gap-8 md:grid-cols-2"><h2 class="section-heading">Mulai dari kebutuhan,<br />bukan paket seragam.</h2><div><p class="section-lead">Siapkan jumlah peserta, target kemampuan, pilihan onsite atau online, dan perkiraan waktu. Admin akan membantu membahas kurikulum, laporan progress, dan penawaran biaya.</p><a href={waLink("Halo, saya mau konsultasi kebutuhan Program Rombongan & Instansi.")} target="_blank" rel="noopener noreferrer" class="button-primary mt-6">Bahas rencana training</a></div></div></section>
 </Layout>

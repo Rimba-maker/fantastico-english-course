@@ -1,68 +1,23 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import PageHeader from "../../components/shared/PageHeader.astro";
-import PhotoCard from "../../components/shared/PhotoCard.astro";
 import ProgramTierCard from "../../components/program/ProgramTierCard";
 import { offlineTiers as tiers } from "../../lib/programs";
 import { waLink } from "../../lib/site";
 ---
 
-<Layout
-  title="Bootcamp Bahasa Inggris Asrama — Fantastico"
-  description="Program bootcamp 1-3 bulan dengan asrama dan English Area 24 jam. Native speaker, persiapan TOEFL/IELTS."
->
-  <PageHeader
-    title="Bootcamp Asrama — Immersive Penuh, Hasil Maksimal."
-    subtitle="Tinggal di asrama dengan English Area 24 jam, didampingi tutor yang tinggal bersama. Pilih durasi sesuai target dan waktu yang kamu punya."
-  />
-
-  <section class="mx-auto max-w-6xl px-6 py-16">
-    <div class="grid gap-6 sm:grid-cols-2">
-      <PhotoCard
-        src="/images/offline-asrama.jpg"
-        alt="Asrama siswa Fantastico English Course"
-        caption="Asrama & English Area 24 jam"
-      />
-      <PhotoCard
-        src="/images/offline-native-speaker.jpg"
-        alt="Native speaker mengajar di kelas"
-        caption="Sesi rutin dengan native speaker"
-      />
-    </div>
-
-    <div class="mt-10 grid gap-6 md:grid-cols-2">
-      {
-        tiers.map((tier, i) => (
-          <ProgramTierCard
-            client:visible
-            index={i}
-            icon={tier.icon}
-            title={tier.title}
-            price={tier.price}
-            suitableFor={tier.suitableFor}
-            features={tier.features}
-            featured={tier.featured}
-            ctaHref={waLink(`Halo, saya mau konsultasi program ${tier.title}.`)}
-            ctaLabel="Konsultasi via WhatsApp"
-          />
-        ))
-      }
-    </div>
-
-    <p class="mt-8 text-center text-caption text-ink-mute">
-      Semua bootcamp termasuk asrama. Biaya kos (jika pilih di luar asrama resmi) dihitung terpisah —
-      lihat halaman <a href="/fasilitas/" class="text-navy underline-offset-4 hover:underline">Fasilitas</a>.
-    </p>
-
-    <div class="mt-10 text-center">
-      <a
-        href={waLink("Halo, saya mau konsultasi Program Offline / Bootcamp.")}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-block rounded-full bg-navy px-6 py-3 text-button-md text-white"
-      >
-        Konsultasi Program Offline via WhatsApp
-      </a>
+<Layout title="Bootcamp Bahasa Inggris Asrama — Fantastico" description="Program bootcamp 1–3 bulan dan Holiday 2 minggu, termasuk asrama dan English Area 24 jam. Bandingkan paket dan sesi native speaker.">
+  <PageHeader title="Beri ruang untuk fokus. Belajar di bootcamp asrama." subtitle="Tinggal di asrama dengan English Area 24 jam, didampingi tutor yang tinggal bersama. Pilih durasi sesuai target dan waktu yang kamu punya." />
+  <section class="section-shell detail-section">
+    <div class="grid gap-8 md:grid-cols-[1fr_1.3fr] md:items-start">
+      <div><h2 class="section-heading">Rutinitas baru.<br />Lebih banyak praktik.</h2><p class="section-lead mt-5">Untuk mahasiswa yang punya jeda semester maupun profesional yang ingin mengambil waktu khusus belajar. Mulai dari fondasi, lanjutkan ke conversation, atau persiapkan TOEFL/IELTS.</p><div class="mt-6 flex flex-wrap gap-4"><a href="#paket" class="button-primary">Bandingkan paket</a><a href="/kalender-akademik/" class="text-link">Cek jadwal intake</a></div></div>
+      <div class="grid grid-cols-2 gap-3"><figure><img src="/images/pexels/campus-discussion.webp" alt="Ilustrasi sekelompok mahasiswa berdiskusi" width="900" height="675" loading="lazy" class="aspect-[4/5] w-full rounded-2xl object-cover" /><figcaption class="media-note mt-2">Ilustrasi diskusi bersama.</figcaption></figure><figure class="mt-10"><img src="/images/pexels/library-study.webp" alt="Ilustrasi belajar mandiri di perpustakaan" width="900" height="675" loading="lazy" class="aspect-[4/5] w-full rounded-2xl object-cover" /><figcaption class="media-note mt-2">Ilustrasi waktu belajar mandiri. Foto Pexels, bukan dokumentasi Fantastico.</figcaption></figure></div>
     </div>
   </section>
+  <section id="paket" class="bg-canvas-soft detail-section"><div class="section-shell">
+    <div class="mb-8 flex flex-wrap items-end justify-between gap-4"><div><h2 class="section-heading">Pilih waktu belajarmu.</h2><p class="section-lead mt-3">Empat pilihan, dengan asrama di setiap paket.</p></div><a href="/biaya/" class="text-link">Lihat seluruh biaya</a></div>
+    <div class="grid gap-5 md:grid-cols-2">{tiers.map((tier, i) => <ProgramTierCard {...tier} index={i} ctaHref={waLink(`Halo, saya mau konsultasi program ${tier.title}.`)} ctaLabel="Konsultasi paket ini" />)}</div>
+    <div class="mt-8 grid gap-5 border-t border-navy/15 pt-6 text-sm leading-relaxed text-ink-secondary md:grid-cols-2"><p>Semua bootcamp termasuk asrama. Biaya kos jika memilih di luar asrama resmi dihitung terpisah. <a href="/fasilitas/" class="text-link">Lihat fasilitas</a>.</p><p>TOEFL/IELTS Prep dan simulasi adalah latihan persiapan, bukan tes resmi atau penerbitan skor resmi. Konfirmasikan ketentuan pengulangan materi dan jadwal wisata dengan admin.</p></div>
+  </div></section>
+  <section class="section-shell detail-section"><div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center"><div><h2 class="section-heading">Cocokkan dengan targetmu.</h2><p class="section-lead mt-3">Ceritakan level awal, waktu yang tersedia, dan rencana studi atau kariermu.</p></div><a href={waLink("Halo, saya mau konsultasi Program Offline / Bootcamp.")} target="_blank" rel="noopener noreferrer" class="button-primary">Konsultasi program offline</a></div></section>
 </Layout>

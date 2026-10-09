@@ -43,7 +43,7 @@ export const offlineTiers: ProgramTier[] = [
     features: [
       "Confidence + Active + Fluent & TOEFL/IELTS Prep",
       "2x sesi native speaker/minggu",
-      "Simulasi TOEFL ITP & IELTS resmi",
+      "Simulasi TOEFL ITP & IELTS (latihan, bukan tes resmi)",
       "Asrama & English Area 24 jam",
       "Garansi mengulang materi gratis jika belum capai target level di evaluasi akhir",
     ],

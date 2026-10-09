@@ -1,6 +1,4 @@
-import { motion } from "motion/react";
-import { Users, Check } from "lucide-react";
-import { fadeUp, staggerContainer } from "../motion/variants";
+import { Check } from "lucide-react";
 
 const benefits = [
   "Kurikulum custom sesuai kebutuhan instansi",
@@ -9,58 +7,17 @@ const benefits = [
   "Laporan progress per peserta untuk pihak instansi",
   "Harga khusus volume, minimal 15 peserta",
 ];
+type Props = { index?: number; ctaHref?: string; ctaLabel?: string };
 
-type Props = {
-  index?: number;
-  ctaHref?: string;
-  ctaLabel?: string;
-};
-
-export default function RombonganPricingCard({
-  index = 0,
-  ctaHref = "/program/rombongan-instansi/",
-  ctaLabel = "Konsultasi Kebutuhan Instansi",
-}: Props) {
+export default function RombonganPricingCard({ ctaHref = "/program/rombongan-instansi/", ctaLabel = "Konsultasi Kebutuhan Instansi" }: Props) {
   const external = ctaHref.startsWith("http");
-
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.08 }}
-      className="flex flex-col rounded-lg bg-canvas p-8 shadow-card"
-    >
-      <Users className="h-8 w-8 text-navy" strokeWidth={1.75} />
-      <h3 className="mt-4 text-heading-lg text-navy">Rombongan & Instansi</h3>
-      <p className="mt-3 text-display-md font-semibold text-gold">Custom Quote</p>
-      <p className="mt-3 text-caption text-ink-mute">
-        Cocok untuk: sekolah, kampus, atau perusahaan (minimal 15 peserta)
-      </p>
-
-      <motion.ul
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-80px" }}
-        variants={staggerContainer(0.06)}
-        className="mt-6 flex-1 space-y-2"
-      >
-        {benefits.map((b) => (
-          <motion.li key={b} variants={fadeUp} className="flex items-start gap-2 text-body-md text-ink">
-            <Check className="mt-0.5 h-4 w-4 shrink-0 text-status-available" strokeWidth={2.5} />
-            {b}
-          </motion.li>
-        ))}
-      </motion.ul>
-
-      <a
-        href={ctaHref}
-        target={external ? "_blank" : undefined}
-        rel={external ? "noopener noreferrer" : undefined}
-        className="mt-6 rounded-full bg-navy px-5 py-3 text-center text-button-md text-white"
-      >
-        {ctaLabel}
-      </a>
-    </motion.div>
+    <article className="flex h-full flex-col rounded-2xl bg-canvas-soft p-6 sm:p-8">
+      <h3 className="text-xl font-semibold text-navy">Rombongan & Instansi</h3>
+      <p className="mt-5 font-display text-4xl font-semibold tracking-tight text-navy">Custom Quote</p>
+      <p className="mt-4 text-sm leading-relaxed text-ink-secondary">Untuk sekolah, kampus, atau perusahaan. Minimal 15 peserta; biaya disesuaikan cakupan program.</p>
+      <ul className="mt-6 flex-1 space-y-3 border-t border-navy/15 pt-6">{benefits.map((benefit) => <li key={benefit} className="flex items-start gap-3 text-sm leading-relaxed text-ink-secondary"><Check aria-hidden="true" className="mt-1 h-4 w-4 shrink-0 text-navy" /><span>{benefit}</span></li>)}</ul>
+      <a href={ctaHref} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined} className="button-primary mt-8 text-center">{ctaLabel}</a>
+    </article>
   );
 }

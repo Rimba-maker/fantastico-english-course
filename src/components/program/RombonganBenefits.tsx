@@ -1,6 +1,4 @@
-import { motion } from "motion/react";
 import { Check } from "lucide-react";
-import { fadeUp, staggerContainer } from "../motion/variants";
 
 const benefits = [
   "Kurikulum custom sesuai kebutuhan instansi (conversational, business English, atau TOEFL/IELTS prep massal)",
@@ -11,24 +9,5 @@ const benefits = [
 ];
 
 export default function RombonganBenefits() {
-  return (
-    <motion.ul
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
-      variants={staggerContainer(0.08)}
-      className="mx-auto mt-8 max-w-2xl space-y-3"
-    >
-      {benefits.map((b) => (
-        <motion.li
-          key={b}
-          variants={fadeUp}
-          className="flex items-start gap-3 rounded-lg bg-canvas p-4 text-left text-body-md text-ink shadow-card"
-        >
-          <Check className="mt-0.5 h-4 w-4 shrink-0 text-status-available" strokeWidth={2.5} />
-          {b}
-        </motion.li>
-      ))}
-    </motion.ul>
-  );
+  return <ul className="mt-6 divide-y divide-hairline border-y border-hairline">{benefits.map((benefit) => <li key={benefit} className="flex items-start gap-4 py-5 text-base leading-relaxed text-ink-secondary"><Check aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-navy" /><span>{benefit}</span></li>)}</ul>;
 }
