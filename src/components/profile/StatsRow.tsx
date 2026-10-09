@@ -1,29 +1,12 @@
-import { motion } from "motion/react";
-import { fadeUp, staggerContainer } from "../motion/variants";
 import { siteConfig } from "../../lib/site";
 
 const stats = [
-  { value: String(siteConfig.stats.foundedYear), label: "Berdiri Sejak" },
-  { value: siteConfig.stats.alumniCount, label: "Alumni" },
-  { value: `Maks. ${siteConfig.stats.classSizeMax}`, label: "Rasio Kelas" },
-  { value: String(siteConfig.stats.instansiPartnerCount), label: "Instansi Partner Rombongan" },
+  { value: String(siteConfig.stats.foundedYear), label: "Tahun berdiri (contoh)" },
+  { value: siteConfig.stats.alumniCount, label: "Jumlah alumni (contoh)" },
+  { value: `Maks. ${siteConfig.stats.classSizeMax}`, label: "Kapasitas kelas program" },
+  { value: String(siteConfig.stats.instansiPartnerCount), label: "Partner instansi (contoh)" },
 ];
 
 export default function StatsRow() {
-  return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
-      variants={staggerContainer(0.08)}
-      className="grid grid-cols-2 gap-6 md:grid-cols-4"
-    >
-      {stats.map((s) => (
-        <motion.div key={s.label} variants={fadeUp} className="rounded-lg bg-canvas-soft p-6 text-center">
-          <p className="text-display-md font-semibold text-navy">{s.value}</p>
-          <p className="mt-1 text-caption text-ink-mute">{s.label}</p>
-        </motion.div>
-      ))}
-    </motion.div>
-  );
+  return <dl className="grid grid-cols-2 gap-x-8 gap-y-6 border-y border-hairline py-7 md:grid-cols-4">{stats.map((stat) => <div key={stat.label}><dt className="text-sm text-ink-secondary">{stat.label}</dt><dd className="mt-2 font-display text-3xl font-semibold text-navy tabular-nums">{stat.value}</dd></div>)}</dl>;
 }

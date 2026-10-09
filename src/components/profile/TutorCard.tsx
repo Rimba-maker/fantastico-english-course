@@ -1,5 +1,4 @@
-import { motion } from "motion/react";
-import { Globe, BadgeCheck, GraduationCap, BarChart3, CalendarClock, Target } from "lucide-react";
+import { Globe } from "lucide-react";
 
 type Props = {
   photo: string;
@@ -13,56 +12,14 @@ type Props = {
   index?: number;
 };
 
-export default function TutorCard({
-  photo,
-  name,
-  isNativeSpeaker,
-  degree,
-  university,
-  scoreLabel,
-  yearsExperience,
-  specialization,
-  index = 0,
-}: Props) {
-  const BadgeIcon = isNativeSpeaker ? Globe : BadgeCheck;
-
+export default function TutorCard({ photo, name, isNativeSpeaker, degree, university, scoreLabel, yearsExperience, specialization }: Props) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.08 }}
-      whileHover={{ y: -4 }}
-      className="rounded-lg bg-canvas p-6 text-center shadow-card"
-    >
-      <img src={photo} alt={name} className="mx-auto h-24 w-24 rounded-full object-cover" loading="lazy" />
-      <h3 className="mt-4 text-heading-sm font-semibold text-navy">{name}</h3>
-
-      <span
-        className={`mt-2 inline-flex items-center gap-1 rounded-full px-3 py-1 text-micro-cap uppercase ${
-          isNativeSpeaker ? "bg-gold-soft text-navy-press" : "bg-navy-subtle text-navy-press"
-        }`}
-      >
-        <BadgeIcon className="h-3.5 w-3.5" strokeWidth={2} />
-        {isNativeSpeaker ? "Native Speaker" : "Tutor Lokal Bersertifikat"}
-      </span>
-
-      <p className="mt-3 flex items-center justify-center gap-1.5 text-body-md text-ink-mute">
-        <GraduationCap className="h-4 w-4 shrink-0 text-navy" strokeWidth={1.75} />
-        {degree}, {university}
-      </p>
-      <p className="mt-1 flex items-center justify-center gap-1.5 text-heading-sm font-semibold text-gold">
-        <BarChart3 className="h-4 w-4 shrink-0" strokeWidth={2} />
-        {scoreLabel}
-      </p>
-      <p className="mt-1 flex items-center justify-center gap-1.5 text-body-md text-ink-mute">
-        <CalendarClock className="h-4 w-4 shrink-0 text-navy" strokeWidth={1.75} />
-        {yearsExperience} tahun pengalaman mengajar
-      </p>
-      <p className="mt-1 flex items-center justify-center gap-1.5 text-body-md text-ink-mute">
-        <Target className="h-4 w-4 shrink-0 text-navy" strokeWidth={1.75} />
-        Spesialisasi: {specialization}
-      </p>
-    </motion.div>
+    <article className="overflow-hidden rounded-2xl bg-canvas-soft">
+      <div className="relative"><img src={photo} alt={`Foto stok untuk contoh profil ${name}, bukan tutor asli`} width="600" height="600" className="aspect-[4/3] w-full object-cover object-top" loading="lazy" /><span className="absolute bottom-3 left-3 rounded-full bg-canvas px-3 py-1 text-xs font-semibold text-navy">Foto ilustrasi · profil contoh</span></div>
+      <div className="p-6"><div className="flex flex-wrap items-center gap-3"><h3 className="font-display text-2xl font-semibold text-navy">{name}</h3><span className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold text-navy ${isNativeSpeaker ? "bg-gold-soft" : "bg-canvas"}`}>{isNativeSpeaker && <Globe aria-hidden="true" className="h-3.5 w-3.5" />}{isNativeSpeaker ? "Native speaker · contoh" : "Tutor lokal bersertifikat · contoh"}</span></div>
+        <p className="mt-3 text-base font-medium text-navy">{specialization}</p>
+        <dl className="mt-5 space-y-4 border-t border-navy/15 pt-5 text-sm leading-relaxed"><div><dt className="text-ink-secondary">Pendidikan contoh</dt><dd className="mt-1 text-ink">{degree}, {university}</dd></div><div className="flex flex-wrap justify-between gap-4"><div><dt className="text-ink-secondary">Skor contoh</dt><dd className="mt-1 font-semibold text-navy tabular-nums">{scoreLabel}</dd></div><div><dt className="text-ink-secondary">Pengalaman contoh</dt><dd className="mt-1 font-semibold text-navy">{yearsExperience} tahun</dd></div></div></dl>
+      </div>
+    </article>
   );
 }

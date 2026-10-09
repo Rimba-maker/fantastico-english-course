@@ -1,75 +1,20 @@
 ---
-import { Icon } from "astro-icon/components";
 import Layout from "../../layouts/Layout.astro";
 import PageHeader from "../../components/shared/PageHeader.astro";
-import PhotoCard from "../../components/shared/PhotoCard.astro";
 import StatsRow from "../../components/profile/StatsRow";
 import { siteConfig } from "../../lib/site";
 
 const misi = [
-  'Menyediakan kurikulum terstruktur dengan hasil yang bisa diukur (skor TOEFL/IELTS, bukan sekadar "lancar")',
+  'Menyediakan kurikulum terstruktur dengan hasil yang bisa diukur, termasuk evaluasi dan persiapan TOEFL/IELTS, bukan sekadar "lancar"',
   "Membuka akses belajar fleksibel lewat jalur online untuk yang tidak bisa datang ke asrama",
-  "Menjaga kualitas lewat kelas kecil dan akses native speaker",
+  "Menjaga kualitas lewat kelas kecil dan akses native speaker sesuai paket",
   "Melayani kebutuhan institusi (sekolah/kampus/perusahaan) dengan program khusus",
 ];
 ---
 
-<Layout
-  title="Profil Perusahaan — Fantastico English Course"
-  description="Lembaga bahasa Inggris terdaftar resmi dengan 3.000+ alumni."
->
-  <PageHeader title="Tentang Fantastico English Course." />
-
-  <section class="mx-auto max-w-3xl px-6 py-16 text-center">
-    <PhotoCard
-      src="/images/perusahaan-lobby.jpg"
-      alt="Gedung dan lobi Fantastico English Course"
-      aspect="aspect-[16/9]"
-    />
-
-    <p class="mt-10 text-body-lg text-ink">
-      Fantastico English Course berdiri sejak {siteConfig.stats.foundedYear} sebagai evolusi dari model
-      belajar immersive ala Kampung Inggris, dihadirkan dalam format yang lebih terstruktur — dengan
-      jalur online dan offline, legalitas jelas, dan hasil yang bisa diukur secara konkret.
-    </p>
-
-    <div class="mt-12 rounded-lg bg-canvas p-8 text-left shadow-card">
-      <h2 class="text-heading-lg text-navy">Visi</h2>
-      <p class="mt-2 text-body-md text-ink-mute">
-        Jadi lembaga bahasa Inggris paling dipercaya untuk hasil terukur, baik secara offline maupun
-        online.
-      </p>
-
-      <h2 class="mt-8 text-heading-lg text-navy">Misi</h2>
-      <ul class="mt-2 space-y-2">
-        {
-          misi.map((m) => (
-            <li class="flex items-start gap-2 text-body-md text-ink-mute">
-              <Icon name="lucide:check" class="mt-1 h-4 w-4 shrink-0 text-status-available" />
-              {m}
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-
-    <div class="mt-12">
-      <StatsRow client:visible />
-    </div>
-
-    <div class="mt-12 grid items-center gap-6 rounded-lg bg-canvas p-8 text-left shadow-card sm:grid-cols-2">
-      <PhotoCard
-        src="/images/perusahaan-legalitas.jpg"
-        alt="Sertifikat dan dokumen legalitas resmi"
-        aspect="aspect-[4/3]"
-      />
-      <div>
-        <h2 class="text-heading-lg text-navy">Terdaftar Resmi.</h2>
-        <p class="mt-2 text-body-md text-ink-mute">
-          SK Diknas No. {siteConfig.legal.skDiknas} • NPSN {siteConfig.legal.npsn}
-        </p>
-        <p class="mt-1 text-body-md text-ink-mute">Badan Usaha: {siteConfig.legal.badanUsaha}</p>
-      </div>
-    </div>
-  </section>
+<Layout title="Profil Perusahaan — Fantastico English Course" description="Kenali pendekatan Fantastico: belajar immersive offline, live class online, serta training instansi. Informasi legalitas dan track record masih data contoh.">
+  <PageHeader title="Dua cara belajar. Satu arah untuk berkembang." subtitle="Fantastico English Course menghadirkan pembelajaran bahasa Inggris yang terstruktur, untuk rencana studi, pekerjaan, dan kebutuhan institusi." />
+  <section class="section-shell detail-section"><div class="grid gap-10 md:grid-cols-[1fr_1.3fr]"><div><h2 class="section-heading">Ruang untuk berlatih.<br />Arah untuk melangkah.</h2><p class="section-lead mt-5">Berangkat dari model belajar immersive ala Kampung Inggris, Fantastico memadukan pengalaman offline dengan jalur online. Kurikulum terstruktur dan evaluasi membantu peserta memahami perkembangan belajarnya.</p><p class="mt-5 text-base leading-relaxed text-ink-secondary">Mahasiswa dan profesional punya ritme yang berbeda. Pilih format yang sesuai dengan waktumu, tanpa kehilangan kesempatan untuk berlatih dan mendapat feedback.</p><a href="/biaya/" class="text-link mt-6 inline-block">Kenali pilihan program</a></div><figure><img src="/images/pexels/campus-building.webp" alt="Ilustrasi bangunan kampus dalam suasana terang" width="1200" height="800" loading="lazy" class="aspect-[4/3] w-full rounded-2xl object-cover" /><figcaption class="media-note mt-3">Ilustrasi lingkungan kampus — foto Pexels, bukan gedung atau fasilitas Fantastico.</figcaption></figure></div></section>
+  <section class="detail-section bg-canvas-soft"><div class="section-shell grid gap-10 md:grid-cols-[.8fr_1.2fr]"><div><h2 class="section-heading">Visi kami.</h2><p class="section-lead mt-5">Jadi lembaga bahasa Inggris paling dipercaya untuk hasil terukur, baik secara offline maupun online.</p><figure class="mt-8"><img src="/images/pexels/community-outdoor.webp" alt="Ilustrasi interaksi komunitas di luar ruangan" width="900" height="675" loading="lazy" class="aspect-[4/3] w-full rounded-2xl object-cover" /><figcaption class="media-note mt-2">Ilustrasi kebersamaan komunitas — foto Pexels.</figcaption></figure></div><div><h2 class="section-heading">Cara kami menuju ke sana.</h2><ul class="mt-6 divide-y divide-navy/15 border-y border-navy/15">{misi.map((m) => <li class="py-5 text-base leading-relaxed text-ink-secondary">{m}</li>)}</ul></div></div></section>
+  <section class="section-shell detail-section"><div class="mb-6 grid gap-5 md:grid-cols-2"><h2 class="section-heading">Informasi lembaga,<br />secara transparan.</h2><p class="section-lead">Tahun berdiri, jumlah alumni, partner instansi, dan identitas legal di bawah masih merupakan data contoh untuk preview situs. Belum menjadi bukti terverifikasi. Minta informasi dan dokumen aktual sebelum mendaftar.</p></div><StatsRow /><div class="mt-8 grid gap-6 md:grid-cols-2"><div><h3 class="text-xl font-semibold text-navy">Identitas legal — data contoh</h3><dl class="mt-5 space-y-4 text-sm"><div><dt class="text-ink-secondary">SK Diknas</dt><dd class="mt-1 text-ink">{siteConfig.legal.skDiknas}</dd></div><div><dt class="text-ink-secondary">NPSN</dt><dd class="mt-1 text-ink">{siteConfig.legal.npsn}</dd></div><div><dt class="text-ink-secondary">Badan usaha</dt><dd class="mt-1 text-ink">{siteConfig.legal.badanUsaha}</dd></div></dl></div><div class="rounded-2xl bg-canvas-gold p-7"><h3 class="font-display text-2xl font-semibold text-navy">Kenali sebelum memutuskan.</h3><p class="mt-4 text-base leading-relaxed text-ink-secondary">Tanyakan legalitas, pengajar, dan fasilitas aktual. Foto di situs ini adalah ilustrasi; materi resmi lembaga perlu dikonfirmasi langsung.</p><a href="/kontak/" class="button-primary mt-6">Hubungi untuk informasi lengkap</a></div></div></section>
 </Layout>

@@ -3,7 +3,6 @@ import Layout from "../../layouts/Layout.astro";
 import PageHeader from "../../components/shared/PageHeader.astro";
 import TutorCard from "../../components/profile/TutorCard";
 
-// TODO: replace with real tutor photos/bios before launch — these are stock photos standing in for dummy profiles.
 const tutors = [
   {
     photo: "/images/tutor-sarah.jpg",
@@ -68,33 +67,11 @@ const tutors = [
 ];
 ---
 
-<Layout
-  title="Tim Pengajar & Native Speaker — Fantastico"
-  description="Kenali tutor kami, termasuk native speaker dengan kredensial terverifikasi."
->
-  <PageHeader
-    title="Diajar Langsung oleh yang Kompeten."
-    subtitle='Bukan cuma "bisa bahasa Inggris" — setiap tutor kami punya kredensial yang bisa dipertanggungjawabkan.'
-  />
-
-  <section class="mx-auto max-w-6xl px-6 py-16">
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {
-        tutors.map((tutor, i) => (
-          <TutorCard
-            client:visible
-            index={i}
-            photo={tutor.photo}
-            name={tutor.name}
-            isNativeSpeaker={tutor.isNativeSpeaker}
-            degree={tutor.degree}
-            university={tutor.university}
-            scoreLabel={tutor.scoreLabel}
-            yearsExperience={tutor.yearsExperience}
-            specialization={tutor.specialization}
-          />
-        ))
-      }
-    </div>
+<Layout title="Tim Pengajar & Native Speaker — Fantastico" description="Jelajahi contoh profil pengajar dan bidang pendampingan. Profil, foto, pendidikan, dan skor yang ditampilkan masih data contoh.">
+  <PageHeader title="Temukan pendamping untuk target belajarmu." subtitle="Conversation, fondasi bahasa, dan persiapan tes membutuhkan pendekatan yang berbeda. Kenali bidang pendampingan sebelum memilih program." />
+  <section class="section-shell detail-section">
+    <div class="mb-10 grid gap-6 md:grid-cols-[1fr_1.4fr]"><h2 class="section-heading">Kenali pengajarnya.</h2><div class="rounded-2xl bg-canvas-gold p-6 text-sm leading-relaxed text-navy"><p class="font-semibold">Profil berikut adalah data contoh, bukan daftar tutor terverifikasi.</p><p class="mt-2">Nama, pendidikan, skor, pengalaman, dan spesialisasi digunakan untuk memperlihatkan format profil. Foto stok tidak menggambarkan tutor Fantastico. Konfirmasikan pengajar dan cakupan sesi native speaker untuk paketmu dengan admin.</p></div></div>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{tutors.map((tutor, i) => <TutorCard {...tutor} index={i} />)}</div>
+    <div class="mt-10 flex flex-wrap items-center justify-between gap-5 border-t border-hairline pt-8"><p class="max-w-2xl text-base text-ink-secondary">Cakupan native speaker berbeda untuk setiap paket. Bandingkan sesi dan durasinya sebelum mendaftar.</p><div class="flex flex-wrap gap-4"><a href="/biaya/" class="button-secondary">Bandingkan paket</a><a href="/kontak/" class="button-primary">Tanyakan pengajar</a></div></div>
   </section>
 </Layout>

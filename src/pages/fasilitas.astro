@@ -1,68 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageHeader from "../components/shared/PageHeader.astro";
-import PhotoCard from "../components/shared/PhotoCard.astro";
-import FacilityList from "../components/shared/FacilityList";
 import { waLink } from "../lib/site";
-
-const offlineFacilities = [
-  { icon: "home" as const, text: "Asrama & Kos (English Area 24 jam wajib berbahasa Inggris)" },
-  { icon: "book-open" as const, text: "Ruang kelas ber-AC, kapasitas kecil (maks. 10 siswa)" },
-  { icon: "utensils" as const, text: "Kantin & dapur umum" },
-  { icon: "wifi" as const, text: "WiFi area belajar" },
-  { icon: "party-popper" as const, text: "Kegiatan ekstra (movie night bahasa Inggris, English club)" },
-];
-
-const onlineFacilities = [
-  { icon: "laptop" as const, text: "Platform live class (Zoom/Google Meet) dengan rekaman tersedia" },
-  { icon: "file-text" as const, text: "Modul digital & worksheet interaktif" },
-  { icon: "message-circle" as const, text: "Grup diskusi WhatsApp per batch untuk latihan sesama peserta" },
-  { icon: "bar-chart" as const, text: "Dashboard progress belajar pribadi (opsional, tergantung implementasi)" },
+const offlineFacilities = ["Asrama & kos dengan English Area 24 jam, wajib berbahasa Inggris", "Ruang kelas ber-AC, kapasitas kecil (maks. 10 siswa)", "Kantin & dapur umum", "WiFi area belajar", "Kegiatan ekstra: movie night bahasa Inggris dan English club"];
+const onlineFacilities = ["Live class via Zoom/Google Meet; akses rekaman mengikuti paket", "Modul digital & worksheet interaktif", "Grup diskusi WhatsApp per batch untuk latihan sesama peserta"];
+const gallery = [
+  { src: "classroom-learning", alt: "Suasana belajar bersama di ruang kelas", caption: "Ilustrasi ruang untuk belajar bersama." },
+  { src: "shared-space", alt: "Ruang bersama untuk bekerja atau belajar", caption: "Ilustrasi ruang bersama dan area belajar." },
+  { src: "cafe-study", alt: "Suasana kafe untuk membaca atau belajar", caption: "Ilustrasi suasana jeda dan belajar informal." },
+  { src: "study-notes", alt: "Catatan dan bahan belajar di meja", caption: "Ilustrasi materi untuk latihan mandiri." },
 ];
 ---
 
-<Layout
-  title="Fasilitas Pendukung Belajar — Fantastico"
-  description="Fasilitas untuk peserta offline (asrama, English Area 24 jam, ruang kelas ber-AC) dan online (live class, modul digital, dashboard progress)."
->
-  <PageHeader title="Fasilitas Pendukung Belajar." />
-
-  <section class="mx-auto max-w-5xl px-6 py-16">
-    <div class="grid gap-4 sm:grid-cols-3">
-      <PhotoCard
-        src="/images/fasilitas-classroom.jpg"
-        alt="Ruang kelas kecil untuk diskusi"
-        caption="Ruang kelas, maks. 10 siswa"
-      />
-      <PhotoCard src="/images/fasilitas-canteen.jpg" alt="Kantin tempat makan bersama" caption="Kantin & dapur umum" />
-      <PhotoCard
-        src="/images/fasilitas-lounge.jpg"
-        alt="Area belajar dengan akses WiFi"
-        caption="Area belajar & WiFi"
-      />
-    </div>
-
-    <div class="mt-10 grid gap-10 md:grid-cols-2">
-      <FacilityList client:visible title="Untuk Peserta Offline/Bootcamp" items={offlineFacilities} />
-      <FacilityList client:visible title="Untuk Peserta Online" items={onlineFacilities} />
-    </div>
-
-    <p class="mt-10 text-center text-caption italic text-ink-mute">
-      Detail aturan asrama & English Area sama seperti dijelaskan di halaman <a
-        href="/program/offline-bootcamp/"
-        class="text-navy not-italic underline-offset-4 hover:underline"
-      >Program Offline/Bootcamp</a>.
-    </p>
-
-    <div class="mt-10 text-center">
-      <a
-        href={waLink("Halo, saya mau tanya soal fasilitas Fantastico English Course.")}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-block rounded-full bg-navy px-6 py-3 text-button-md text-white"
-      >
-        Tanya Fasilitas Lengkap via WhatsApp
-      </a>
-    </div>
-  </section>
+<Layout title="Fasilitas Pendukung Belajar — Fantastico" description="Kenali fasilitas program offline dan dukungan kelas online. Seluruh foto adalah ilustrasi Pexels, bukan dokumentasi fasilitas aktual.">
+  <PageHeader title="Lingkungan yang mendukung kebiasaan belajar." subtitle="Dari rutinitas English Area hingga modul digital, kenali dukungan untuk jalur offline dan online sebelum memilih program." />
+  <section class="section-shell detail-section"><div class="grid gap-6 md:grid-cols-2 md:items-end"><h2 class="section-heading">Ruang belajar,<br />di dua format.</h2><p class="section-lead">Galeri berikut menggunakan foto stok Pexels untuk mengilustrasikan suasana belajar. Bukan foto asrama, kelas, kantin, atau fasilitas Fantastico. Minta dokumentasi aktual kepada admin.</p></div><div class="mt-8 grid gap-5 sm:grid-cols-2">{gallery.map((photo) => <figure><img src={`/images/pexels/${photo.src}.webp`} alt={`Ilustrasi: ${photo.alt}`} width="1200" height="800" loading="lazy" class="aspect-[3/2] w-full rounded-2xl object-cover" /><figcaption class="media-note mt-2">{photo.caption} Foto Pexels.</figcaption></figure>)}</div></section>
+  <section class="detail-section bg-canvas-soft"><div class="section-shell grid gap-10 md:grid-cols-2"><div><h2 class="section-heading">Offline / Bootcamp</h2><ul class="mt-6 divide-y divide-navy/15 border-y border-navy/15">{offlineFacilities.map((facility) => <li class="py-4 text-base leading-relaxed text-ink-secondary">{facility}</li>)}</ul><p class="mt-6 text-sm leading-relaxed text-ink-secondary">Asrama termasuk semua paket bootcamp. Kos di luar asrama resmi dihitung terpisah.</p><a href="/program/offline-bootcamp/" class="text-link mt-4 inline-block">Program & aturan English Area</a></div><div><h2 class="section-heading">Online</h2><ul class="mt-6 divide-y divide-navy/15 border-y border-navy/15">{onlineFacilities.map((facility) => <li class="py-4 text-base leading-relaxed text-ink-secondary">{facility}</li>)}</ul><p class="mt-6 text-sm leading-relaxed text-ink-secondary">Dashboard progress pribadi adalah opsi pengembangan, belum tersedia di situs statis ini. Konfirmasikan bentuk laporan belajar dan akses rekaman pada paket pilihanmu.</p><a href="/program/online/" class="text-link mt-4 inline-block">Lihat dukungan paket online</a></div></div></section>
+  <section class="section-shell detail-section"><div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center"><div><h2 class="section-heading">Lihat lebih dekat, sebelum daftar.</h2><p class="section-lead mt-4">Tanyakan fasilitas aktual, aturan asrama, dan dukungan belajarnya.</p></div><a href={waLink("Halo, saya mau tanya soal fasilitas Fantastico English Course dan dokumentasi aktualnya.")} target="_blank" rel="noopener noreferrer" class="button-primary">Tanya fasilitas lengkap</a></div></section>
 </Layout>
