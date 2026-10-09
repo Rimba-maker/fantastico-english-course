@@ -1,8 +1,8 @@
-import { motion } from "motion/react";
+import { ArrowUpRight } from "lucide-react";
 import { statusMeta, type IntakeStatus } from "./statusMeta";
 
 export type MonthData = {
-  id: string; // "2026-03"
+  id: string;
   month: string;
   year: number;
   intakeDates: string[];
@@ -11,44 +11,14 @@ export type MonthData = {
   highlight?: string;
 };
 
-export default function MonthCard({
-  data,
-  index,
-  onSelect,
-}: {
-  data: MonthData;
-  index: number;
-  onSelect: (id: string) => void;
-}) {
+export default function MonthCard({ data, onSelect }: { data: MonthData; index: number; onSelect: (id: string) => void }) {
   const status = statusMeta[data.status];
-
   return (
-    <motion.button
-      type="button"
-      layoutId={`month-card-${data.id}`}
-      onClick={() => onSelect(data.id)}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.05 }}
-      whileHover={{ y: -3 }}
-      className="flex flex-col rounded-lg bg-canvas p-5 text-left shadow-card"
-    >
-      <div className="flex items-center justify-between gap-2">
-        <p className="text-heading-sm font-semibold text-navy">
-          {data.month} {data.year}
-        </p>
-        <span
-          className={`inline-flex shrink-0 items-center gap-1 rounded-full px-2.5 py-1 text-micro-cap uppercase text-white ${status.className} ${
-            status.pulse ? "animate-pulse" : ""
-          }`}
-        >
-          <status.icon className="h-3 w-3" strokeWidth={2.5} />
-          {status.label}
-        </span>
-      </div>
-      <p className="mt-2 text-caption text-ink-mute">Intake: {data.intakeDates.join(", ")}</p>
-      {data.highlight && <p className="mt-1 text-caption text-gold">{data.highlight}</p>}
-    </motion.button>
+    <button type="button" aria-haspopup="dialog" aria-label={`Lihat intake ${data.month} ${data.year}, ${status.label}`} onClick={() => onSelect(data.id)} className="group flex h-full flex-col rounded-2xl border border-hairline bg-canvas p-5 text-left hover:border-navy">
+      <span className="flex w-full items-start justify-between gap-3"><span className="font-display text-xl font-semibold text-navy">{data.month}<span className="ml-2 text-sm font-normal text-ink-secondary">{data.year}</span></span><ArrowUpRight aria-hidden="true" className="h-5 w-5 shrink-0 text-navy" /></span>
+      <span className="mt-4 text-sm text-ink-secondary">Intake: {data.intakeDates.join(", ")}</span>
+      {data.highlight && <span className="mt-2 text-sm font-medium text-navy">{data.highlight}</span>}
+      <span className="mt-auto pt-5"><span className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold text-white ${status.className}`}><status.icon aria-hidden="true" className="h-3.5 w-3.5" />{status.label}</span></span>
+    </button>
   );
 }

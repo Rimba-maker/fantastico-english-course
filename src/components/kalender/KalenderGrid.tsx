@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import MonthCard, { type MonthData } from "./MonthCard";
 import MonthDetailModal from "./MonthDetailModal";
 
 export default function KalenderGrid({ months }: { months: MonthData[] }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const selected = months.find((m) => m.id === selectedId) ?? null;
+  const closeModal = useCallback(() => setSelectedId(null), []);
 
   return (
     <>
@@ -13,7 +14,7 @@ export default function KalenderGrid({ months }: { months: MonthData[] }) {
           <MonthCard key={m.id} data={m} index={i} onSelect={setSelectedId} />
         ))}
       </div>
-      <MonthDetailModal data={selected} onClose={() => setSelectedId(null)} />
+      <MonthDetailModal data={selected} onClose={closeModal} />
     </>
   );
 }
