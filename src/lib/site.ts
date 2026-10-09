@@ -42,22 +42,3 @@ export const navInfoLainnya = [
   { label: "Alumni & Testimoni", href: "/alumni/" },
 ] as const;
 
-export const navPrimary = [
-  { label: "Beranda", href: "/" },
-  { label: "Kalender Akademik", href: "/kalender-akademik/" },
-  { label: "Biaya", href: "/biaya/" },
-] as const;
-
-export const footerLinks = [
-  { label: "Beranda", href: "/" },
-  { label: "Offline / Bootcamp", href: "/program/offline-bootcamp/" },
-  { label: "Online", href: "/program/online/" },
-  { label: "Rombongan & Instansi", href: "/program/rombongan-instansi/" },
-  { label: "Profil Perusahaan", href: "/profile/perusahaan/" },
-  { label: "Profil Guru & Tutor", href: "/profile/guru-tutor/" },
-  { label: "Fasilitas", href: "/fasilitas/" },
-  { label: "Kalender Akademik", href: "/kalender-akademik/" },
-  { label: "Biaya", href: "/biaya/" },
-  { label: "Alumni & Testimoni", href: "/alumni/" },
-  { label: "Kontak & Pendaftaran", href: "/kontak/" },
-] as const;
