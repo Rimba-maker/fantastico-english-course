@@ -1,29 +1,29 @@
 ---
 import { Icon } from "astro-icon/components";
-import { navProgram, navInfoLainnya } from "../../lib/site";
+import { navProgram, navInfoLainnya, withBase } from "../../lib/site";
 const pathname = Astro.url.pathname;
-const isActive = (href: string) => pathname === href;
+const isActive = (href: string) => pathname === withBase(href);
 ---
 <header class="site-header">
   <nav class="section-shell nav-shell" aria-label="Navigasi utama">
-    <a class="wordmark" href="/" aria-label="Fantastico English Course — Beranda">
+    <a class="wordmark" href={withBase("/")} aria-label="Fantastico English Course — Beranda">
       <span class="brand-symbol"><Icon name="lucide:book-open" aria-hidden="true" /></span>
       <span><strong>fantastico<span class="brand-dot">.</span></strong><small>ENGLISH COURSE</small></span>
     </a>
     <button class="menu-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Buka menu navigasi"><Icon name="lucide:menu" aria-hidden="true" /></button>
     <div id="primary-navigation" class="nav-links">
-      <a href="/" aria-current={isActive("/") ? "page" : undefined}>Beranda</a>
+      <a href={withBase("/")} aria-current={isActive("/") ? "page" : undefined}>Beranda</a>
       <details class="nav-dropdown">
         <summary>Program <Icon name="lucide:chevron-down" aria-hidden="true" /></summary>
-        <div class="dropdown-panel">{navProgram.map(item => <a href={item.href} aria-current={isActive(item.href) ? "page" : undefined}>{item.label}<Icon name="lucide:arrow-up-right" aria-hidden="true" /></a>)}</div>
+        <div class="dropdown-panel">{navProgram.map(item => <a href={withBase(item.href)} aria-current={isActive(item.href) ? "page" : undefined}>{item.label}<Icon name="lucide:arrow-up-right" aria-hidden="true" /></a>)}</div>
       </details>
-      <a href="/kalender-akademik/" aria-current={isActive("/kalender-akademik/") ? "page" : undefined}>Kalender</a>
-      <a href="/biaya/" aria-current={isActive("/biaya/") ? "page" : undefined}>Biaya & paket</a>
+      <a href={withBase("/kalender-akademik/")} aria-current={isActive("/kalender-akademik/") ? "page" : undefined}>Kalender</a>
+      <a href={withBase("/biaya/")} aria-current={isActive("/biaya/") ? "page" : undefined}>Biaya & paket</a>
       <details class="nav-dropdown">
         <summary>Tentang kami <Icon name="lucide:chevron-down" aria-hidden="true" /></summary>
-        <div class="dropdown-panel">{[...navInfoLainnya, {label: "FAQ", href: "/faq/"}].map(item => <a href={item.href} aria-current={isActive(item.href) ? "page" : undefined}>{item.label}<Icon name="lucide:arrow-up-right" aria-hidden="true" /></a>)}</div>
+        <div class="dropdown-panel">{[...navInfoLainnya, {label: "FAQ", href: "/faq/"}].map(item => <a href={withBase(item.href)} aria-current={isActive(item.href) ? "page" : undefined}>{item.label}<Icon name="lucide:arrow-up-right" aria-hidden="true" /></a>)}</div>
       </details>
-      <a class="button-primary nav-cta" href="/kontak/">Mulai konsultasi <Icon name="lucide:arrow-up-right" aria-hidden="true" /></a>
+      <a class="button-primary nav-cta" href={withBase("/kontak/")}>Mulai konsultasi <Icon name="lucide:arrow-up-right" aria-hidden="true" /></a>
     </div>
   </nav>
 </header>

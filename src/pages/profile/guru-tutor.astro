@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import PageHeader from "../../components/shared/PageHeader.astro";
 import TutorCard from "../../components/profile/TutorCard";
+import { withBase } from "../../lib/site";
 
 const tutors = [
   {
@@ -72,6 +73,6 @@ const tutors = [
   <section class="section-shell detail-section">
     <div class="mb-10 grid gap-6 md:grid-cols-[1fr_1.4fr]"><h2 class="section-heading">Kenali pengajarnya.</h2><div class="rounded-2xl bg-canvas-gold p-6 text-sm leading-relaxed text-navy"><p class="font-semibold">Profil berikut adalah data contoh, bukan daftar tutor terverifikasi.</p><p class="mt-2">Nama, pendidikan, skor, pengalaman, dan spesialisasi digunakan untuk memperlihatkan format profil. Foto stok tidak menggambarkan tutor Fantastico. Konfirmasikan pengajar dan cakupan sesi native speaker untuk paketmu dengan admin.</p></div></div>
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{tutors.map((tutor, i) => <TutorCard {...tutor} index={i} />)}</div>
-    <div class="mt-10 flex flex-wrap items-center justify-between gap-5 border-t border-hairline pt-8"><p class="max-w-2xl text-base text-ink-secondary">Cakupan native speaker berbeda untuk setiap paket. Bandingkan sesi dan durasinya sebelum mendaftar.</p><div class="flex flex-wrap gap-4"><a href="/biaya/" class="button-secondary">Bandingkan paket</a><a href="/kontak/" class="button-primary">Tanyakan pengajar</a></div></div>
+    <div class="mt-10 flex flex-wrap items-center justify-between gap-5 border-t border-hairline pt-8"><p class="max-w-2xl text-base text-ink-secondary">Cakupan native speaker berbeda untuk setiap paket. Bandingkan sesi dan durasinya sebelum mendaftar.</p><div class="flex flex-wrap gap-4"><a href={withBase("/biaya/")} class="button-secondary">Bandingkan paket</a><a href={withBase("/kontak/")} class="button-primary">Tanyakan pengajar</a></div></div>
   </section>
 </Layout>

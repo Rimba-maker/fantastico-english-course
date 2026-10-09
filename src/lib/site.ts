@@ -29,6 +29,11 @@ export function waLink(message: string = siteConfig.whatsappDefaultMessage) {
   return `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(message)}`;
 }
 
+/** Prefix an unprefixed, root-relative local URL with this build's base path. */
+export function withBase(path: string) {
+  return `${import.meta.env.BASE_URL.replace(/\/$/, "")}${path}`;
+}
+
 export const navProgram = [
   { label: "Offline / Bootcamp", href: "/program/offline-bootcamp/" },
   { label: "Online", href: "/program/online/" },

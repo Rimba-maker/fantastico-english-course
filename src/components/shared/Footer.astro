@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-import { siteConfig } from "../../lib/site";
+import { siteConfig, withBase } from "../../lib/site";
 const groups = [
   { title: "Temukan programmu", links: [{label: "Offline / Bootcamp", href: "/program/offline-bootcamp/"}, {label: "Kelas Online", href: "/program/online/"}, {label: "Rombongan & Instansi", href: "/program/rombongan-instansi/"}, {label: "Biaya & Paket", href: "/biaya/"}] },
   { title: "Kenali Fantastico", links: [{label: "Profil Perusahaan", href: "/profile/perusahaan/"}, {label: "Guru & Tutor", href: "/profile/guru-tutor/"}, {label: "Fasilitas", href: "/fasilitas/"}, {label: "Alumni & Testimoni", href: "/alumni/"}] },
@@ -10,11 +10,11 @@ const groups = [
 <footer class="campus-footer bg-navy text-white">
   <div class="section-shell">
     <div class="footer-top">
-      <div><a class="footer-brand" href="/">fantastico<span>.</span></a><p>{siteConfig.tagline}</p></div>
-      <a class="footer-contact" href="/kontak/">Mari bicarakan tujuanmu <Icon name="lucide:arrow-up-right" aria-hidden="true" /></a>
+      <div><a class="footer-brand" href={withBase("/")}>fantastico<span>.</span></a><p>{siteConfig.tagline}</p></div>
+      <a class="footer-contact" href={withBase("/kontak/")}>Mari bicarakan tujuanmu <Icon name="lucide:arrow-up-right" aria-hidden="true" /></a>
     </div>
     <div class="footer-columns">
-      {groups.map(group => <div><h2>{group.title}</h2><ul>{group.links.map(link => <li><a href={link.href}>{link.label}</a></li>)}</ul></div>)}
+      {groups.map(group => <div><h2>{group.title}</h2><ul>{group.links.map(link => <li><a href={withBase(link.href)}>{link.label}</a></li>)}</ul></div>)}
       <div><h2>Tetap terhubung</h2><ul>{Object.entries(siteConfig.social).map(([name, href]) => <li><a href={href} target="_blank" rel="noopener noreferrer">{name.charAt(0).toUpperCase() + name.slice(1)} <Icon name="lucide:arrow-up-right" aria-hidden="true" /></a></li>)}</ul><a class="email-link" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></div>
     </div>
     <div class="preview-note"><Icon name="lucide:info" aria-hidden="true" /><p>Pratinjau desain: foto Pexels adalah ilustrasi. Kontak, legalitas, profil tutor, dan testimoni contoh perlu diverifikasi dengan data asli sebelum situs dipublikasikan.</p></div>

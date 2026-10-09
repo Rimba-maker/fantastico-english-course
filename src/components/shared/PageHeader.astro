@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import { withBase } from "../../lib/site";
 interface Props { title: string; subtitle?: string; }
 const { title, subtitle } = Astro.props;
 const scenes: Record<string, { image: string; alt: string; caption: string }> = {
@@ -15,13 +16,13 @@ const scenes: Record<string, { image: string; alt: string; caption: string }> = 
   "/faq/": { image: "student-reading", alt: "Ilustrasi mahasiswa membaca materi belajar", caption: "Kenali program sebelum menentukan pilihan." },
   "/kontak/": { image: "online-call", alt: "Ilustrasi percakapan melalui panggilan video", caption: "Mulai dari sebuah percakapan." },
 };
-const scene = scenes[Astro.url.pathname] ?? scenes["/biaya/"];
+const scene = Object.entries(scenes).find(([path]) => withBase(path) === Astro.url.pathname)?.[1] ?? scenes["/biaya/"];
 ---
 <section class="page-opening section-shell">
-  <a href="/" class="back-link"><Icon name="lucide:arrow-left" aria-hidden="true" /> Kembali ke beranda</a>
+  <a href={withBase("/")} class="back-link"><Icon name="lucide:arrow-left" aria-hidden="true" /> Kembali ke beranda</a>
   <div class="opening-grid">
     <div class="opening-copy"><h1>{title}</h1>{subtitle && <p>{subtitle}</p>}</div>
-    <figure><img src={`/images/pexels/${scene.image}.webp`} alt={scene.alt} width="1000" height="700" loading="eager" /><figcaption><span>{scene.caption}</span><small>Foto ilustrasi · Pexels</small></figcaption></figure>
+    <figure><img src={withBase(`/images/pexels/${scene.image}.webp`)} alt={scene.alt} width="1000" height="700" loading="eager" /><figcaption><span>{scene.caption}</span><small>Foto ilustrasi · Pexels</small></figcaption></figure>
   </div>
 </section>
 <style>

@@ -8,7 +8,9 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "build:pages": "astro build --site https://rimba-maker.github.io --base /fantastico-english-course --outDir ./dist-pages",
     "preview": "astro preview",
+    "preview:pages": "astro preview --base /fantastico-english-course --outDir ./dist-pages",
     "astro": "astro"
   },
   "dependencies": {

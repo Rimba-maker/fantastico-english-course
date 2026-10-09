@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { ArrowUpRight, ArrowRight, MapPin, Monitor, Check } from "lucide-react";
-import { waLink } from "../../lib/site";
+import { waLink, withBase } from "../../lib/site";
 
 type Mode = "offline" | "online";
 const modes = {
@@ -21,7 +21,7 @@ export default function Hero() {
         <p className="hero-intro">Dari percakapan pertama hingga persiapan TOEFL & IELTS. Temukan cara belajar yang cocok untuk tujuan dan keseharianmu.</p>
         <div className="hero-actions">
           <a className="button-primary" href={waLink("Halo, saya ingin konsultasi pilihan program Fantastico.")} target="_blank" rel="noopener noreferrer">Temukan programmu <ArrowUpRight size={18} aria-hidden="true" /></a>
-          <a className="text-link" href="/kalender-akademik/">Lihat jadwal belajar <ArrowRight size={17} aria-hidden="true" /></a>
+          <a className="text-link" href={withBase("/kalender-akademik/")}>Lihat jadwal belajar <ArrowRight size={17} aria-hidden="true" /></a>
         </div>
         <div className="hero-choice">
           <div className="mode-selector" role="group" aria-label="Pilih jalur belajar">
@@ -32,19 +32,19 @@ export default function Hero() {
           </div>
           <div className="mode-description" aria-live="polite">
             <p>{active.description}</p>
-            <a className="mode-price" href={active.href}><span>Mulai <strong>{active.price}</strong></span><ArrowUpRight size={19} aria-hidden="true" /></a>
+            <a className="mode-price" href={withBase(active.href)}><span>Mulai <strong>{active.price}</strong></span><ArrowUpRight size={19} aria-hidden="true" /></a>
           </div>
         </div>
       </div>
       <div className="hero-gallery">
         <div className="hero-main-photo">
-          <motion.img key={active.photo} src={`/images/pexels/${active.photo}.webp`} alt={active.alt} width="1400" height="1000" fetchPriority="high" initial={{ filter: reducedMotion ? "blur(0px)" : "blur(3px)", scale: reducedMotion ? 1 : 1.025 }} animate={{ filter: "blur(0px)", scale: 1 }} transition={{ duration: reducedMotion ? 0 : .45, ease: [.16, 1, .3, 1] }} />
+          <motion.img key={active.photo} src={withBase(`/images/pexels/${active.photo}.webp`)} alt={active.alt} width="1400" height="1000" fetchPriority="high" initial={{ filter: reducedMotion ? "blur(0px)" : "blur(3px)", scale: reducedMotion ? 1 : 1.025 }} animate={{ filter: "blur(0px)", scale: 1 }} transition={{ duration: reducedMotion ? 0 : .45, ease: [.16, 1, .3, 1] }} />
           <span className="photo-scene"><SceneIcon size={14} aria-hidden="true" />{active.label}</span>
         </div>
         <div className="hero-gallery-bottom">
-          <img src="/images/pexels/community-outdoor.webp" alt="Ilustrasi mahasiswa belajar bersama di luar ruangan" width="1000" height="750" loading="eager" />
+          <img src={withBase("/images/pexels/community-outdoor.webp")} alt="Ilustrasi mahasiswa belajar bersama di luar ruangan" width="1000" height="750" loading="eager" />
           <div className="hero-scene-copy"><Check size={21} aria-hidden="true" /><h2>{active.title}</h2><p>Satu tujuan.<br />Dua cara untuk memulai.</p></div>
-          <img src="/images/pexels/study-notes.webp" alt="Ilustrasi catatan untuk latihan bahasa" width="1000" height="750" loading="eager" />
+          <img src={withBase("/images/pexels/study-notes.webp")} alt="Ilustrasi catatan untuk latihan bahasa" width="1000" height="750" loading="eager" />
         </div>
         <p className="hero-photo-note">Suasana belajar sebagai inspirasi · Foto ilustrasi dari Pexels</p>
       </div>
