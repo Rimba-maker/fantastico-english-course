@@ -2,61 +2,12 @@
 import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
 import PageHeader from "../components/shared/PageHeader.astro";
-import PhotoCard from "../components/shared/PhotoCard.astro";
 import ContactForm from "../components/kontak/ContactForm";
 import { siteConfig } from "../lib/site";
-
 const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(siteConfig.address)}&output=embed`;
 ---
 
-<Layout
-  title="Kontak & Pendaftaran — Fantastico"
-  description="Hubungi Fantastico English Course untuk konsultasi dan pendaftaran program offline maupun online."
->
-  <PageHeader title="Siap Upgrade Bahasa Inggrismu?" />
-
-  <section class="mx-auto max-w-5xl px-6 py-16">
-    <div class="grid gap-10 md:grid-cols-2">
-      <div>
-        <h2 class="text-heading-lg text-navy">Form Pendaftaran</h2>
-        <div class="mt-4">
-          <ContactForm client:idle />
-        </div>
-      </div>
-
-      <div>
-        <h2 class="text-heading-lg text-navy">Info Kontak</h2>
-        <ul class="mt-4 space-y-2 text-body-md text-ink-mute">
-          <li class="flex items-center gap-2">
-            <Icon name="lucide:phone" class="h-4 w-4 shrink-0 text-navy" />
-            {siteConfig.phone}
-          </li>
-          <li class="flex items-center gap-2">
-            <Icon name="lucide:mail" class="h-4 w-4 shrink-0 text-navy" />
-            {siteConfig.email}
-          </li>
-          <li class="flex items-start gap-2">
-            <Icon name="lucide:map-pin" class="mt-0.5 h-4 w-4 shrink-0 text-navy" />
-            {siteConfig.address}
-          </li>
-        </ul>
-
-        <div class="mt-6">
-          <PhotoCard src="/images/perusahaan-lobby.jpg" alt="Gedung dan lobi Fantastico English Course" aspect="aspect-[16/9]" />
-        </div>
-
-        <div class="mt-4 overflow-hidden rounded-lg border border-hairline">
-          <iframe
-            src={mapSrc}
-            width="100%"
-            height="300"
-            style="border:0"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Lokasi Fantastico English Course"
-          ></iframe>
-        </div>
-      </div>
-    </div>
-  </section>
+<Layout title="Kontak & Pendaftaran — Fantastico" description="Mulai konsultasi program dengan form yang membuka WhatsApp. Cocokkan pilihan paket, jadwal, dan kebutuhan belajar sebelum mendaftar.">
+  <PageHeader title="Langkah pertama: ceritakan rencanamu." subtitle="Belum perlu punya semua jawabannya. Pilih jalur belajar, bagikan kebutuhanmu, dan lanjutkan konsultasi pendaftaran melalui WhatsApp." />
+  <section class="section-shell detail-section"><div class="mb-9 rounded-2xl bg-canvas-gold p-6 text-sm leading-relaxed text-navy"><p class="font-semibold">Informasi kontak pada preview ini masih menggunakan data contoh.</p><p class="mt-2">Nomor WhatsApp, telepon, alamat, email, dan lokasi peta belum dikonfirmasi sebagai kontak resmi Fantastico. Jangan mengirim data sensitif atau pembayaran sebelum kontak aktual diverifikasi.</p></div><div class="grid gap-12 lg:grid-cols-[1.15fr_.85fr]"><div><h2 class="section-heading">Mulai konsultasi.</h2><p class="section-lead mt-4 mb-7">Isian ini menyiapkan pesan, bukan formulir yang tersimpan di server.</p><ContactForm client:load /></div><aside class="lg:pl-6"><h2 class="font-display text-3xl font-semibold text-navy">Info kontak</h2><ul class="mt-6 space-y-5 text-base leading-relaxed text-ink-secondary"><li class="flex items-start gap-3"><Icon name="lucide:phone" class="mt-1 h-5 w-5 shrink-0 text-navy" /><div><span class="block text-xs font-semibold text-navy">Telepon — contoh</span><a href={`tel:${siteConfig.phone.replaceAll(" ", "")}`} class="text-link">{siteConfig.phone}</a></div></li><li class="flex items-start gap-3"><Icon name="lucide:mail" class="mt-1 h-5 w-5 shrink-0 text-navy" /><div><span class="block text-xs font-semibold text-navy">Email — contoh</span><a href={`mailto:${siteConfig.email}`} class="text-link break-all">{siteConfig.email}</a></div></li><li class="flex items-start gap-3"><Icon name="lucide:map-pin" class="mt-1 h-5 w-5 shrink-0 text-navy" /><div><span class="block text-xs font-semibold text-navy">Alamat — contoh</span>{siteConfig.address}</div></li></ul><figure class="mt-8"><img src="/images/pexels/campus-group.webp" alt="Ilustrasi kelompok mahasiswa berbincang" width="900" height="675" loading="lazy" class="aspect-[16/9] w-full rounded-2xl object-cover" /><figcaption class="media-note mt-2">Ilustrasi percakapan bersama — foto Pexels, bukan peserta Fantastico.</figcaption></figure><div class="mt-6 overflow-hidden rounded-2xl border border-hairline"><iframe src={mapSrc} width="100%" height="260" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Peta alamat contoh, bukan lokasi resmi terverifikasi"></iframe></div><p class="media-note mt-2">Peta mengacu pada alamat contoh. Konfirmasikan lokasi aktual sebelum berkunjung.</p><div class="mt-7 flex flex-wrap gap-5"><a href="/faq/" class="text-link">Baca FAQ</a><a href="/biaya/" class="text-link">Bandingkan biaya</a></div></aside></div></section>
 </Layout>
